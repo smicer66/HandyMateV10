@@ -1,0 +1,92 @@
+<!--
+  Generated template for the BillPaymentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))"><!--background-color:#232D4B !important;-->
+	
+	<ion-title style="color: #fff !important;">About Us & Support</ion-title>
+	<ion-buttons start> 
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden">  
+			<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important">-->
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div> 
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<div ion-row style="padding-right: 0px !important;">
+		<ion-list ion-row style="padding-right: 0px !important; margin-right:0px !important">
+			<ion-item>
+				<ion-icon style="color: #3268a8 !important;" name="home" item-left></ion-icon>
+				<div style="color: #3268a8 !important; font-size: 0.7em !important; font-weight: bold !important">About HandyMate</div>
+			</ion-item>
+			
+			<ion-item (click)="goToDocument('PRIVACY POLICY')" class="odditem">
+				<div col-10 style="float: left !important; font-size: 0.9em !important; padding:0px !important;">
+					<div style="font-size: 0.7em !important; font-weight: bold !important">Privacy Policy</div>
+					<div style="color: #000000; padding: 0px !important; font-size: 0.6em !important">Read about how we manage your privacy</div>
+				</div>
+				<div col-2 style="float: left !important; font-size: 0.7em !important; text-align: right !important">
+					<ion-icon name="arrow-dropright"></ion-icon>
+				</div>
+			</ion-item>
+			
+			<ion-item (click)="goToDocument('TERMS & CONDITIONS')" class="evenitem">
+				<div col-10 style="float: left !important; font-size: 0.9em !important; padding:0px !important;">
+					<div style="font-size: 0.7em !important; font-weight: bold !important">Our Terms & Conditions</div>
+					<div style="color: #000000; padding: 0px !important; font-size: 0.6em !important">Read about our terms and conditions</div>
+				</div>
+				<div col-2 style="float: left !important; font-size: 0.7em !important; text-align: right !important">
+					<ion-icon name="arrow-dropright"></ion-icon>
+				</div>
+			</ion-item>
+			
+			<ion-item (click)="supportTickets()" class="odditem">
+				<div col-10 style="float: left !important; font-size: 0.9em !important; padding:0px !important;">
+					<div style="font-size: 0.7em !important; font-weight: bold !important">Support Tickets</div>
+					<div style="color: #000000; padding: 0px !important; font-size: 0.6em !important">Manage your support tickets</div>
+				</div>
+				<div col-2 style="float: left !important; font-size: 0.7em !important; text-align: right !important">
+					<ion-icon name="arrow-dropright"></ion-icon>
+				</div>
+			</ion-item>
+			
+			<ion-item (click)="contact()" class="evenitem">
+				<div col-10 style="float: left !important; font-size: 0.9em !important; padding:0px !important;">
+					<div style="font-size: 0.7em !important; font-weight: bold !important">Contact Us</div>
+					<div style="color: #000000; padding: 0px !important; font-size: 0.6em !important">Contact us and drop us a message</div>
+				</div>
+				<div col-2 style="float: left !important; font-size: 0.7em !important; text-align: right !important">
+					<ion-icon name="arrow-dropright"></ion-icon>
+				</div>
+			</ion-item>
+			
+			<ion-item (click)="goToDocument('FAQS')" class="odditem">
+				<div col-10 style="float: left !important; font-size: 0.9em !important; padding:0px !important;">
+					<div style="font-size: 0.7em !important; font-weight: bold !important">FAQs</div>
+					<div style="color: #000000; padding: 0px !important; font-size: 0.6em !important">Popular questions and answers</div>
+				</div>
+				<div col-2 style="float: left !important; font-size: 0.7em !important; text-align: right !important">
+					<ion-icon name="arrow-dropright"></ion-icon>
+				</div>
+			</ion-item>
+			
+			<ion-item (click)="goToDocument('ABOUTUS')" class="evenitem">
+				<div col-10 style="float: left !important; font-size: 0.9em !important; padding:0px !important;">
+					<div style="font-size: 0.7em !important; font-weight: bold !important">About HandyMate Services</div>
+					<div style="color: #000000; padding: 0px !important; font-size: 0.6em !important">Read more about who we are and our services</div>
+				</div>
+				<div col-2 style="float: left !important; font-size: 0.7em !important; text-align: right !important">
+					<ion-icon name="arrow-dropright"></ion-icon>
+				</div>
+			</ion-item>
+		</ion-list>
+	</div>
+
+</ion-content>

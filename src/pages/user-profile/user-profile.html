@@ -1,0 +1,141 @@
+<ion-header>
+
+  <ion-navbar style="background-color: #232D4B !important">
+    <ion-title style="">
+		<span style="float: left !important; color: #fff !important; font-size: 0.8em !important" *ngIf="userProfileSelected!=null">{{userProfileSelected.first_name}} {{userProfileSelected.last_name}}</span>
+		<span style="float: right !important; color: #fff !important; font-size: 0.8em !important" *ngIf="userProfileSelected!=null"><ion-icon name="close" (click)="dismissModal()"></ion-icon></span>
+	</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item *ngIf="userProfileSelected!=null">
+				<div col-12 style="display: flex;    flex-direction: column;     justify-content: center;    align-items: center;    width: 100%;">
+					<div style="text-align: center !important" style="text-align: center !important; width: 96px !important; height: 96px !important; overflow: hidden; border-radius: 50% !important">
+						<img src="assets/imgs/icon_user.png" *ngIf="!(userProfileSelected!=undefined && userProfileSelected!=null && userProfileSelected.current_image_url!=null)" style="width:96px !important; background-color: transparent !important;">
+						<img src="assets/imgs/icon_user.png" *ngIf="(userProfileSelected!=undefined && userProfileSelected!=null && userProfileSelected.current_image_url!=null)" [src]="userProfileSelected.current_image_url" style="width:96px !important; background-color: transparent !important;">
+					</div>
+				</div>
+				<div col-12 style="text-align: center !important; padding-top: 5px !important;">
+					<ionic3-star-rating
+						activeIcon = "ios-star"
+						defaultIcon = "ios-star-outline"
+						activeColor = "#fcba03" 
+						defaultColor = "#d1d1d1"
+						readonly="false" 
+						*ngIf="userProfileSelected.total_user_rating!=undefined && userProfileSelected.total_user_rating!=null && userProfileSelected.rating_count!=undefined && userProfileSelected.rating_count!=null"
+						[rating]="(userProfileSelected.total_user_rating/(userProfileSelected.rating_count)).toFixed(2)"
+						fontSize = "15px">
+					</ionic3-star-rating>
+					<ionic3-star-rating
+						activeIcon = "ios-star"
+						defaultIcon = "ios-star-outline"
+						activeColor = "#fcba03" 
+						defaultColor = "#d1d1d1"
+						readonly="false" 
+						*ngIf="!(userProfileSelected.total_user_rating!=undefined && userProfileSelected.total_user_rating!=null && userProfileSelected.rating_count!=undefined && userProfileSelected.rating_count!=null)"
+						rating="0"
+						fontSize = "15px">
+					</ionic3-star-rating>
+					<span style="border-right: 0px !important" *ngIf="userProfileSelected!=null && userProfileSelected.total_user_rating!=undefined && userProfileSelected.total_user_rating!=null && userProfileSelected.rating_count!=undefined && userProfileSelected.rating_count!=null">{{userProfileSelected.rating_count==0 ? '0.00' : (userProfileSelected.total_user_rating/(userProfileSelected.rating_count)).toFixed(2)}} - {{(userProfileSelected.rating_count)}} Reviews</span>
+					<span style="border-right: 0px !important" *ngIf="!(userProfileSelected!=null && userProfileSelected.total_user_rating!=undefined && userProfileSelected.total_user_rating!=null && userProfileSelected.rating_count!=undefined && userProfileSelected.rating_count!=null)">0.00 - 0 Reviews</span>
+					<br>
+					<img src="assets/imgs/country/{{userProfileSelected.district.state.countries.country_iso_code2.toLowerCase()}}.png" style="height: 16px !important"> <small>{{userProfileSelected.district.state.countries.name}} | {{userProfileSelected.district.state.name}}</small><br>
+				</div>
+				<div style="clear:both !important; padding: 5px !important; padding-bottom: 15px !important; padding-top: 10px !important; text-align: left !important; font-weight: 100">
+					
+					<div style="float: left !important; " col-12><span style="text-decoration: none !important; border: 0px !important;">Projects Posted:</span> {{projects_count}}</div>
+					<div style="float: right !important; " col-12><span style="text-decoration: none !important; border: 0px !important;">Amount Paid:</span> ZMW{{amount_spent.toFixed(2)}}</div>
+					<div style="float: left !important; " col-12><span style="text-decoration: none !important; border: 0px !important;">Jobs Completed:</span> {{projects_completed}}</div>
+				</div>
+				<div col-12 style="clear:both !important; padding: 5px !important; padding-bottom: 15px !important; padding-top: 10px !important; text-align: left !important; font-weight: 100">
+					<hr>
+					<strong style="text-decoration: none !important">About {{userProfileSelected.first_name}} {{userProfileSelected.last_name}}</strong><br>
+					<div col-12 style="text-align: left !important">
+					{{userProfileSelected.profile}}
+					</div>
+				</div>
+				
+				<div col-12 *ngIf="userProfileSelected!=undefined && userProfileSelected!=null && userProfileSelected.my_reviews!=undefined && userProfileSelected.my_reviews!=null" style="text-align: center !important; clear:both !important; padding: 5px !important; padding-bottom: 15px !important; padding-top: 10px !important; text-align: left !important; font-weight: bold">
+					<hr>
+					<strong style="text-decoration: underline !important;">Reviews</strong><br>
+					<div col-12 *ngFor="let projectReview of userProfileSelected.my_reviews; let t1=index" style="text-align: left !important; clear: both !important; border-top: #000 1px dashed; padding-top: 15px !important; padding-bottom: 10px !important">
+						<ion-badge style="float: left !important">{{projectReview.rating.toFixed(1)}}</ion-badge>
+						<ionic3-star-rating style="padding-left: 10px !important;float: left !important" 
+							activeIcon = "ios-star"
+							defaultIcon = "ios-star-outline"
+							activeColor = "#fcba03" 
+							defaultColor = "#d1d1d1"
+							readonly="false" 
+							[rating]="projectReview.rating"
+							fontSize = "15px">
+						</ionic3-star-rating>
+						<br>
+						<p style="font-weight: 100 !important; clear: both !important"><i>{{projectReview.review_details}}</i></p>
+						<div style="float: left !important; text-align: center !important; border-bottom: 1px dashed #000 !important; text-align: center !important; width: 24px !important; height: 24px !important; overflow: hidden; border-radius: 50% !important">
+							<img src="assets/imgs/icon_user.png" *ngIf="!(projectReview.reviewer!=undefined && projectReview.reviewer!=null && projectReview.reviewer.current_image_url!=null)" style="width:24px !important; background-color: transparent !important;">
+							<img src="assets/imgs/icon_user.png" *ngIf="(projectReview.reviewer!=undefined && projectReview.reviewer!=null && projectReview.reviewer.current_image_url!=null)" [src]="projectReview.reviewer.current_image_url" style="width:24px !important; background-color: transparent !important;">
+						</div>
+						<div style="float: left !important; font-weight: 100 !important; padding-left: 5px !important;">
+							<small>By {{projectReview.reviewer.first_name}} {{projectReview.reviewer.last_name}}</small>
+						</div>
+						<div col-12 style="clear: both !important; height: 2px; font-size: 2px !important;">
+							&nbsp;
+						</div>
+					</div>
+				</div>
+				<div col-12 style="clear:both !important; padding: 5px !important; padding-bottom: 15px !important; padding-top: 10px !important; text-align: left !important; font-weight: bold">
+					<hr>
+					<strong style="text-decoration: underline !important;">Work Portfolio</strong><br>
+					<div col-12 *ngIf="portfolio.length>0">
+						<div col-4 class="square" *ngFor="let acct of portfolio; let t1=index" >
+							<div class="square" style="padding-right: 1px !important;">
+								<img  [src]="acct.file_name" class="squareImage">
+							</div>
+						</div>
+					</div>
+					<div col-12 style="clear:both !important; padding: 5px !important; padding-bottom: 15px !important; padding-top: 10px !important; text-align: left !important; font-weight: bold">
+						<div col-12 style="text-align: left !important" *ngIf="portfolio.length==0">
+							<small>No Portfolio Photos Uploaded</small>
+							
+							<div col-12 style="text-align: left !important;" *ngIf="user!=undefined && user!=null && userSelected!=undefined && userSelected!=null && user.id==userSelected.id && user.role_type == 'Artisan'">
+								<small style="font-weight: 100 !important; color: #757472">Click to upload pictures of your work</small>
+							</div>
+						</div>
+						<div col-12 *ngIf="userProfileSelected!=undefined && userProfileSelected!=null && userProfileSelected.id==user.id && user.role_type == 'Artisan'"  style="text-align: center !important">
+							<div col-4 class="square" >
+								<img  [src]="attach_image_url1" (click)="selectImage(1)" class="squareImage">
+							</div>
+							<div col-4 class="square" >
+								<img  [src]="attach_image_url2" (click)="selectImage(2)"  class="squareImage">
+							</div>
+							<div col-4 class="square" >
+								<img  [src]="attach_image_url3" (click)="selectImage(3)"  class="squareImage">
+							</div>
+						</div>
+						<form *ngIf="user!=undefined && user!=null && userSelected!=undefined && userSelected!=null && user.id==userSelected.id && user.role_type == 'Artisan'" [formGroup]="userPortolioForm" col-12 justify-content-center style="clear: both !important; padding-left: 0px !important; padding-right: 0px !important;">
+							<div ion-row col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important;"><!--background-color: #F5B201 !important; -->
+								<div ion-col col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
+									<button type="submit" ion-button full  color="secondary" style="border-radius: 5px !important; background-color: #F5B201" (click)="uploadPortfolios()">Upload Images <ion-icon name="cloud-upload"></ion-icon></button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+					
+				<div col-12 *ngIf="!(userProfileSelected!=undefined && userProfileSelected!=null && userProfileSelected.my_reviews!=undefined && userProfileSelected.my_reviews!=null)" style="clear:both !important; padding: 5px !important; padding-bottom: 15px !important; padding-top: 10px !important; text-align: center !important; font-weight: bold">
+					<hr>
+					<strong>Reviews</strong><br>
+					<div col-12 style="text-align: center !important">
+						There are currently no reviews
+					</div>
+				</div>
+				<!--<div col-12 style="text-align: center !important">
+					<a ion-button small color="danger" class="smallbtnright btn-success" (click)="reportUser(userProfileSelected)" style="">Report {{userProfileSelected.first_name}} {{userProfileSelected.last_name}}</a>
+				</div>-->
+		</ion-item>
+	</ion-list>
+</ion-content>

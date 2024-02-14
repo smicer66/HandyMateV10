@@ -1,0 +1,227 @@
+page-home {
+	.vertical-align-content > *
+	{
+		 display: flex!important;
+		 align-content: center!important;
+		 align-items: center!important;
+	}
+	
+	.scroll-content{
+		/*padding: 0px !important;*/
+		background-color: #fff !important;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	
+	.list-ios > .item-block:first-child {
+		border-top: 0px solid #c8c7cc;
+	}
+	
+	.item-inner{
+		padding: 5px !important;
+	}
+	
+	.input-wrapper{
+		background-color: #fff !important;
+		border-radius: 5px;
+	}
+	
+	.ion-item_1{
+		border-bottom: 0px solid #4B8D23;
+		padding: 0px !important;
+		background-color: #f7f7f7 !important;
+	}
+	
+	.list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block{
+		border-bottom: 0px solid #4B8D23;
+	}
+	
+	.list span {
+		border-right: 0px !important;
+	}
+	
+	.list-md {
+		background-color: transparent !important;
+	}
+	
+	
+	.segment-ios .segment-button.segment-activated{
+		background-color: #f7f7f7 !important;
+		color: #000 !important;
+		border-color: #f7f7f7 !important;
+	}
+	
+	.segment-button{
+		border-color: #f7f7f7 !important;
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+	
+	
+	.custon-nav{
+	  height: 48px;
+	  width: 20px;
+	  cursor: pointer;
+
+	  vertical-align: middle;
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	}
+	.prev-icon-custom{
+	  background: url(https://freakyjolly.com/demo/jquery/OwlCarousel2/nav-icon.png) no-repeat scroll 0px 0px;
+	}
+	.prev-icon-custom.disabled{
+	  opacity: 0.4;
+	  cursor: default;
+	}
+	.next-icon-custom{
+	  background: url(https://freakyjolly.com/demo/jquery/OwlCarousel2/nav-icon.png) no-repeat scroll -32px 0px;
+	}
+	.next-icon-custom.disabled{
+	  opacity: 0.4;
+	  cursor: default;
+	}
+	.slider-nav{
+	  ion-icon{
+		  height: 100%;
+	  }
+	}
+
+	.slide-text{
+	  position: absolute;
+	  color: white;
+	  bottom: 30px;
+	}
+	
+	.slide-zoom {
+		text-align: left !important;
+		padding-left: 20px !important;
+	}
+	
+	.skname{
+		font-size: 0.8em !important;
+	}
+	
+	.skbg{
+		padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 10px !important
+	}
+	
+	.squareImage{
+		
+	}
+	
+	
+	.squareImageSlotDiv{
+		height: 100% !important;
+		width: 100%!important;
+		margin: 2px !important;
+		position: relative !important;
+		
+	}
+	
+	.squareImageSlotDiv1{
+		border: 1px dashed #232D4B !important;
+	}
+	
+	.squareImageSlot{
+		overflow-x: hidden !important;
+		width: 100% !important;
+	}
+	
+	.projectslist{
+		width: 200px !important; 
+	}
+	
+	.selectedImage{
+		border: 4px solid #0f9d58 !important;
+	}
+	
+	.projectslist > .slide-zoom{
+	
+	}
+	
+	.categoryicon{
+		height: 38px !important;
+		width: 38px !important;
+	}
+	
+	/*LDPI*/
+	@media only screen and (min-width: 200px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-ldpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*MDPI*/
+	@media only screen and (min-width: 320px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-mdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*HDPI*/
+	@media only screen and (min-width: 480px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-hdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*XDPI*/
+	@media only screen and (min-width: 720px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-xhdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*XXLDPI*/
+	@media only screen and (min-width: 960px) {
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-xxhdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	
+	}
+	
+	/*XXXDPI*/
+	@media only screen and (min-width: 1280px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-xxxhdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	
+	}
+}

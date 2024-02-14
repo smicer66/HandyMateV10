@@ -1,0 +1,374 @@
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))"><!--background-color:#232D4B !important;-->
+	
+	<ion-title style="color: #fff !important;" *ngIf="type=='PRIVACY POLICY'" style="color: #fff !important; text-align: right; font-size: 1.5rem"><span style="color: #fff !important; text-align: right; font-size: 1.5rem">Privacy Policy</span></ion-title>
+	<ion-title style="color: #fff !important;" *ngIf="type=='TERMS & CONDITIONS'" style="color: #fff !important; text-align: right; font-size: 1.5rem"><span style="color: #fff !important; text-align: right; font-size: 1.5rem">Terms & Conditions</span></ion-title>
+	<ion-title style="color: #fff !important;" *ngIf="type=='FAQS'" style="color: #fff !important; text-align: right; font-size: 1.5rem"><span style="color: #fff !important; text-align: right; font-size: 1.5rem">FAQs</span></ion-title>
+	<ion-buttons start> 
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden">  
+			<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important">-->
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div> 
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="bg-img">
+	<div class="main-content">
+
+		<div padding  style="width: 100%;" *ngIf="type=='PRIVACY POLICY'">
+			<div><strong>Privacy Policy</strong></div>
+			<div>As At 24 May 2020</div>
+			<br><br>
+			<div>Our privacy obligations</div>
+			<p>HandyMateServices.com ("HandyMate") is governed by the Zambian Government under the Corporate Affairs Registration Act 2020 (Cth). 
+			The APPs regulate how personal information is handled by HandyMateServices.com.</p>
+
+			<p>'Personal information' means information or an opinion about an identified individual, or an individual who is reasonably identifiable. HandyMate's Privacy Policy applies to personal information collected and/or held by HandyMate.</p>
+
+			<p>This Privacy Policy also explains how we process 'personal data' about people in Zambia, as required under the Data Protection Regulation.</p>
+
+			<p>We will review this policy regularly, and we may update it from time to time.</p>
+
+			<p><strong>The types of personal information we collect and hold</strong></p>
+			<p>We collect personal information about our users in order provide our products, services, and customer support. Our products, services, and 
+			customer support are provided through many platforms including but not limited to: websites, phone apps, email, and telephone. 
+			The specific platform and product, service, or support you interact with may affect the personal data we collect.</p>
+
+			<p>Not all information requested, collected, and processed by us is "Personal Information" as it does not identify you as a specific natural person. This will include majority of "User Generated Content" that you provide us with the intention of sharing with other users. Such "Non-Personal Information" is not covered by this privacy policy. However, as non-personal information may be used in aggregate or be linked with existing personal information; when in this form it will be treated as personal information. As such, this privacy policy will list both types of information for the sake of transparency.</p>
+
+			<p>In some situation users may provide us with personal information without us asking for it, or through means not intended for the collection of particular types of information. Whilst we may take reasonable steps to protect this data, the user will have bypassed our systems, processes, and control and thus the information provided will not be governed by this privacy policy.</p>
+
+			<p>In some situations users may provide us personal information over platforms that are outside our control; for example through social media or forums. Whilst any information collected by us is governed by this Privacy Policy, the platform by which it was communicated will be governed by its own Privacy Policy.</p>
+
+			<p>How we collect personal information<br>
+			Information that you specifically give us<br>
+			While you use our products and services you may be asked to provide certain types of personal information. This might happen through our website, applications, online chat systems, telephone, paper forms, or in-person meetings. We will give you a Collection Notice at the time, to explain how we will use the personal information we are asking for. The notice may be written or verbal.</p>
+
+			<p>We may request, collect, or process the following information:</p>
+			<br>
+			<p>Account Details - username, password, profile picture.<br>
+			Contact Details - email address, phone number.<br>
+			Location Details - physical address, billing address, timezone.<br>
+			Identity Details - full name, proof of identity (e.g. drivers licence, passport), proof of address (e.g. utility bill), photograph of the user.<br>
+			User Generated Content - project descriptions and attachments, bid description, user profiles, user reviews, user messages etc.<br><br></p>
+
+			<p>Information that we collect from others</p>
+			<p>Users can give permission for us to connect to their account on other platforms to collect personal information. <br>
+			This includes but is not limited to Facebook, LinkedIn, and Google. Information collected will be governed by this Privacy Policy. <br>
+			Users can stop us from collecting data from other platforms by removing our access on the other platform or by contacting our support team.</p>
+
+			<p>Users have the ability to invite non-users to our platform by providing contact details such as email address. <br>
+			In these situations, the information will be collected and stored by us to contact the non-user and to prevent abuse of the invite systems.</p>
+
+			<p>Your payment provider may transmit information about the payment that we may collect or process.</p>
+
+			<p>In some situations, personal information of users may be collected from public sources.</p>
+
+			<p>We may collect or process the following information:</p>
+			<br>
+			<p>Basic Details - username, profile picture.<br>
+			Contact Details - email address, phone number.<br>
+			Location Details - Physical Address, billing address, timezone.<br>
+			List of contacts - email provider address book.<br>
+			User Generated Content - user profile.<br>
+			Information we collect as you use our service<br>
+			We maintain records of the interactions we have with our users, including the products, services and customer support we have provided. This includes the interactions our users have with our platform such as when a user has viewed a page or clicked a button.</p>
+
+			<p>In order to deliver certain products or services we may passively collect your GPS coordinates, where available from your device. Most modern devices such as smartphones will display a permission request when our platform requests this data.</p>
+
+			<p>When we are contacted we may collect personal information that is intrinsic to the communication. For example, if we are contacted via email, we will collect the email address used.</p>
+
+			<p>We may collect or process the following information:<p>
+
+			<p>Metadata - IP address, computer and connection information, referring web page, standard web log information, language settings, timezone, etc.<br>
+			Device Information - device identifier, device type, device plugins, hardware capabilities, etc.<br>
+			Location - GPS position.<br>
+			Actions - pages viewed, buttons clicked, time spent viewing, search keywords, etc.<br>
+			Links to other sites<br>
+			On our website, you will encounter links to third party websites. These links may be from us, or they may appear as content generated by other users. These linked sites are not under our control and thus we are not responsible for their actions. Before providing your personal information via any other website, we advise you to examine the terms and conditions of using that website and its privacy policy.</p>
+
+			<p>How we use personal information<br>
+			The information we request, collect, and process is primarily used to provide users with the product or service they have requested. More specifically, we may use your personal information for the following purposes:<br>
+
+			to provide the service or product you have requested;<br>
+			to facilitate the creation of a User Contract (see Terms of Service for more information);<br>
+			to provide technical or other support to you;<br>
+			to answer enquiries about our services, or to respond to a complaint;<br>
+			to promote our other programs, products or services which may be of interest to you (unless you have opted out from such communications);<br>
+			to allow for debugging, testing and otherwise operate our platforms;<br>
+			to conduct data analysis, research and otherwise build and improve our platforms;<br>
+			to comply with legal and regulatory obligations;<br>
+			if otherwise permitted or required by law; or<br>
+			for other purposes with your consent, unless you withdraw your consent for these purposes.<br>
+			</p>
+
+			<p>
+			The 'lawful processing' grounds on which we will use personal information about our users are (but are not limited to):<br>
+
+			when a user has given consent;<br>
+			when necessary for the performance of a contract to which the user is party;<br>
+			processing is necessary for compliance with our legal obligations;<br>
+			processing is necessary in order to protect the vital interests of our users or of another natural person.<br>
+			processing is done in pursuing our legitimate interests, where these interests do not infringe on the rights of our users.<br>
+			We use automated decision when helping matching users to jobs. The primary way this occurs is through how we rank users. These rankings are produced by analysing user generated content, user activity and the outcome of jobs; in this context, user generated content will include reviews that users receive when completing jobs. More information on these ranking guides can be found in our community articles. Automated decision making is also used to recommend potential jobs to our users and as a part of our marketplace security systems.<br>
+			</p>
+
+			<p>
+			When we disclose personal information<br>
+			Our third party service providers<br>
+			The personal information of users may be held, transmitted to or processed on our behalf outside Australia, including 'in the cloud', by our third party service providers. Our third party service providers are bound by contract to only use your personal information on our behalf, under our instructions.
+			</p>
+
+			<p>
+			Our third party service providers include:<br>
+			Cloud hosting, storage, networking and related providers<br>
+			SMS providers<br>
+			Payment and banking providers<br>
+			Marketing and analytics providers<br>
+			Security providers<br>
+			Third party applications<br>
+			Through the HandyMate API it is possible for users to grant third party applications access to their HandyMate account. Depending on the permissions that are granted, these applications may be able to access some personal information or do actions on the users' behalf. These third party applications are not controlled by us and will be governed by their own privacy policy. Users are able to remove third party applications from access their data through their settings.</p>
+
+			<p>
+			Other disclosures and transfers<br>
+			We may also disclose your personal information to third parties for the following purposes:<br>
+
+			if necessary to provide the service or product you have requested;<br>
+			we receive court orders, subpoenas or other requests for information by law enforcement;<br>
+			if otherwise permitted or required by law; or<br>
+			for other purposes with your consent.<br>
+			As we are a global company, with offices around the world, your personal information may be processed by staff in any of our offices. HandyMate currently has offices in Australia, The Philippines, The United Kingdom, Canada, and Argentina.</p>
+
+
+			<p>Accessing, correcting, or downloading your personal information<br>
+			You have the right to request access to the personal information HandyMate holds about you. Unless an exception applies, we must allow you to see the personal information we hold about you, within a reasonable time period, and without unreasonable expense for no charge. Most personal information can be accessed by logging into your account. If you wish to access information that is not accessible through the platform, or wish to download all personal information we hold on you in a portable data format, please contact our Privacy Officer.</p>
+
+			<p>You also have the right to request the correction of the personal information we hold about you. All your personal information can be updated through the user settings pages. If you require assistance please contact our customer support.</p>
+
+			<p>Exercising your other rights<br>
+			You have a number of other rights in relation to the personal data HandyMate holds about you, however, there may be restrictions on how you may exercise the rights. This is largely due to the nature of the products and services we provide. Much of the data we collect is in order to facilitate contracts between users, facilitate payments, and provide protection for the legitimate users of our marketplace - these data uses are protected against the below rights.</p>
+
+			<p>You have the right to:<br>
+
+			seek human review of automated decision-making or profiling<br>
+			opt-out of direct marketing, and profiling for marketing<br>
+			erasure<br>
+			temporary restriction of processing.<br>
+			Human review of automated decision making / profiling - In the case of our ranking algorithms, it is not possible to exercise this right as this ranking is a fundamental part of the marketplace that users participate in, opting out would mean not being able to participate in the marketplace. Decisions affecting marketplace security are already reviewed by humans.</p>
+
+			<p>Direct marketing and profiling - users can control what emails they receive through their settings page.</p>
+
+			<p>Erasure - Most personal information and user generated content cannot be deleted as they are used to support contracts between users, document financial transactions, and are used in providing protecting other legitimate users of the marketplace. In the case of non-personal data that can be linked with personal data, it will either be erased or otherwise anonymised from the personal data.</p>
+
+			<p>Temporary restriction to processing - under certain circumstances you may exercise this right, in particular if you believe that the personal data we have is not accurate, or you believe that we do not have legitimate grounds for processing your information. In either case you may exercise this right by contacting our privacy officer.</p>
+
+			<p>Unless stated above, users may exercise any of the above rights by contacting our Privacy Officer.</p>
+
+			<p>To contact our Privacy Officer<br>
+			If you have an enquiry or a complaint about the way we handle your personal information, or to seek to exercise your privacy rights in relation to the personal information we hold about you, you may contact our Privacy Officer as follows:<br>
+
+			By Email: <br>
+			contactus@HandyMate.com<br><br>
+
+			By Mail: <br>
+			Attn: Contact Officer <br>
+			Plot 119, Luswata Road <br>
+			Lusaka, Zambia<br>
+			</p>
+
+			<p>For the purposes of the GDPR, our Privacy Officer is also our Data Protection Officer (DPO).</p>
+
+			<p>While we endeavour to resolve complaints quickly and informally, if you wish to proceed to a formal privacy complaint, we request that you make your complaint in writing to our Privacy Officer, by mail or email as above. We will acknowledge your formal complaint within 10 working days of receipt.</p>
+		</div>
+		
+		<div padding  style="width: 100%;" *ngIf="type=='ABOUTUS'">
+			<div><strong>About Us</strong></div>
+			<br><br>
+			<div><strong>Who We Are</strong></div>
+			<p>Handymate is an e-commerce solution, modernizing convenient ways to  find cost effective services from service providers. Compare pricing, view profiles  and reviews best suited for your needs.</p>
+
+			<hr>
+			<p><strong>Clients get to enjoy the following below:</strong></p>
+			<p>Finding a service professional made easy!</p>
+
+			<p>Select from a list of verified Mates</p>
+
+			<p>Differentiate Mates reviews skills and prices</p>
+			
+			<p>Safe cash- free payments</p>
+			
+			<p>Plan the work at your own time</p>
+			
+			<p>Chat with teammates on the app</p>
+
+			
+			<hr>
+			<p><strong>Mates/Artisans, we provide you an opportunity to:</strong></p>
+			<p>Grow your business and make money your way</p>
+
+			<p>Work on own schedule</p>
+
+			<p>Set your prices for your services</p>
+
+			<p>Chat with clients on app</p>
+
+			<p>Get brand awareness</p>
+
+		</div>
+		
+		
+		
+		<div padding  style="width: 100%;" *ngIf="type=='TERMS & CONDITIONS'">
+			<p>Terms & Conditions</p>
+			<p>Last modified on 30 July 2020.</p>
+
+			<p>This Terms & Conditions describes the terms and conditions which you accept by using our Website or our Services. We have incorporated by reference some linked information.</p>
+
+			<p>In this Terms & Conditions:<br>
+			"Account" means the account associated with your email address.</p>
+
+			<p>"Buyer" means a User that purchases Seller Services or items from Sellers or identifies a Seller through the Website. A User may be both a Buyer and a Seller under this agreement.</p>
+
+			<p>"Dispute Resolution Process" means the process to be followed by Buyers and Sellers in accordance with the Dispute Resolution Services.</p>
+
+			<p>"HandyMate", "we", "our", "company" or "the company" or "us" means HandyMate Services.</p>
+
+			<p>"Inactive Account" means a User Account that has not been logged into for a 6 month period, or other period determined by us from time to time.</p>
+
+			<p>"Intellectual Property Rights" means any and all intellectual property rights, existing worldwide and the subject matter of such rights, including: (a) patents, copyright, rights in circuit layouts (or similar rights), registered designs, registered and unregistered trademarks, and any right to have confidential information kept confidential; and (b) any application or right to apply for registration of any of the rights referred to in paragraph (a), whether or not such rights are registered or capable of being registered and whether existing under any laws, at common law or in equity.</p>
+
+			<p>"Project" or "Listing" means a job offered or awarded by a Buyer via the Website, which may include a Project or Contest listed by a Buyer, a Project awarded by a Buyer (for example through HireMe), a service bought by a Buyer from a Seller, and service awarded by a Buyer to a Seller as a result of a Contest or competition hosted via the Website.</p>
+
+			<p>"Client" means a User that offers and provides services or identifies as a Seller through the Website. A User may be both a Buyer and a Seller under this agreement.</p>
+
+			<p>"Client Services" means all services provided by a Seller.</p>
+
+			<p>"Mate" means the service provider who intends to work on projects.</p>
+
+			<p>"User", "you" or "your" means an individual who visits or uses the Website, including via the API.</p>
+
+			<p>"User Contract" means: (1) this User Agreement; (2) the Code of Conduct as amended from time to time; (3) any other contractual provisions accepted by both the Seller and Buyer uploaded to the Website, to the extent not inconsistent with the User Agreement and the Code of Conduct; (4) the Project terms as awarded and accepted on the Website, to the extent not inconsistent with the User Agreement and the Code of Conduct; and (5) any other material incorporated by reference from time to time.</p>
+
+			<p>"Website" means the Websites operated by HandyMate and available at: HandyMate.com and any of its regional or other domains or properties, and any related HandyMate service, tool or application, specifically including mobile web, any iOS App and any Android App, or API or other access mechanism.</p>
+
+			<p>1. Overview<br>
+			By accessing the Website, you agree to the following terms with HandyMate.</p>
+
+			<p>We may amend this User Agreement and any linked information from time to time by posting amended terms on the Website, without notice to you.</p>
+
+			<p>The Website is an online venue where Users buy and sell Seller Services and items. Buyers and Sellers must register for an Account in order to buy or sell Seller Services and/or items. The Website enables Users to work together online to complete and pay for Projects, buy and sell items and to use the services that we provide. We are not a party to any contractual agreements between Buyer and Seller in the online venue, we merely facilitate connections between the parties.</p>
+
+			<p>We may, from time to time, and without notice, change or add to the Website or the information, products or services described in it. However, we do not undertake to keep the Website updated. We are not liable to you or anyone else if any error occurs in the information on the Website or if that information is not current.</p>
+
+			<p>2. Scope<br>
+			Before using the Website, you must read the whole User Agreement, the Website policies and all linked information.</p>
+
+			<p>You must read and accept all of the terms in, and linked to, this User Agreement, the Code of Conduct, the HandyMate Privacy Policy and all Website policies. By accepting this User Agreement as you access our Website, you agree that this User Agreement will apply whenever you use the Website, or when you use the tools we make available to interact with the Website. Some Websites may have additional or other terms that we provide to you when you use those services.</p>
+
+			<p>3. Eligibility<br>
+			You will not use the Website if you:<br>
+
+			are not able to form legally binding contracts;<br>
+			are under the age of 16;<br>
+			a person barred from receiving and rendering services under the laws of Zambia or other applicable jurisdiction;<br>
+			are suspended from using the Website; or<br>
+			do not hold a valid email address.<br>
+			All free user accounts are associated with individuals. Login credentials should not be shared by users with others. <br>
+			The individual associated with the account will be held responsible for all actions taken by the account, without limitation.</p>
+
+			<p>Subject to your local laws, a person over 15 but under 18 can use an adult's account with the permission of the account holder. However, the account holder is responsible for all actions taken by the account, without limitation.</p>
+
+			<p>Users may provide a business name or a company name, which is associated with the User's Account. Users acknowledge and agree that where a business name or company name is associated with their Account, this User Agreement is a contract with the User as an individual (not the business or company) and Users remain solely responsible for all activity undertaken in respect of their Account.</p>
+
+			<p>A company, corporation, trust, partnership or other non-individual corporate entity may be a User subject to an eligible corporate account which pays corporate subscriptions.</p>
+
+			<p>We may, at our absolute discretion, refuse to register any person or entity as a User.</p>
+
+			<p>You cannot transfer or assign any rights or obligations you have under this agreement without prior written consent.</p>
+
+			<p>4. Using HandyMate<br>
+			While using the Website, you will not attempt to or otherwise do any of the following:</p>
+
+			<p>post content or items in inappropriate categories or areas on our Websites and services;<br>
+			infringe any laws, third party rights or our policies, such as the Code of Conduct;<br>
+			fail to deliver payment for services delivered to you;<br>
+			fail to deliver Seller Services purchased from you;<br>
+			circumvent or manipulate our fee structure, the billing process, or fees owed to HandyMate;<br>
+			post false, inaccurate, misleading, deceptive, defamatory or offensive content (including personal information);<br>
+			take any action that may undermine the feedback or reputation systems (such as displaying, importing or exporting feedback information or using it for purposes unrelated to the Website);<br>
+			transfer your HandyMate account (including feedback) and Username to another party without our consent;<br>
+			distribute or post spam, unsolicited, or bulk electronic communications, chain letters, or pyramid schemes;<br>
+			distribute viruses or any other technologies that may harm HandyMate, the Website, or the interests or property of HandyMate users (including their Intellectual Property Rights, privacy and publicity rights) or is unlawful, threatening, abusive, defamatory, invasive of privacy, vulgar, obscene, profane or which may harass or cause distress or inconvenience to, or incite hatred of, any person;<br>
+			download and aggregate listings from our website for display with listings from other websites without our express written permission, "frame", "mirror" or otherwise incorporate any part of the Website into any other website without our prior written authorisation;<br>
+			attempt to modify, translate, adapt, edit, decompile, disassemble, or reverse engineer any software programs used by us in connection with the Website;<br>
+			copy, modify or distribute rights or content from the Website or HandyMate's copyrights and trademarks; or<br>
+			harvest or otherwise collect information about Users, including email addresses, without their consent.<br>
+			use HandyMate to facilitate money exchange including, but not limited to, cryptocurrency (e.g. bitcoin, ethereum, etc).</p>
+
+			<p>5. Intellectual Property Rights Infringement<br>
+			It is our policy to respond to clear notices of alleged intellectual property rights infringement. Our Copyright Infringement Policy is designed to make submitting notices of alleged infringement to us as straightforward as possible while reducing the number of notices that we receive that are fraudulent or difficult to understand or verify. If you believe that your Intellectual Property Rights have been violated, please notify us via this link on our Website and we will investigate.</p>
+
+			<p>6. Fees and Services<br>
+			We charge fees for certain services, such as introduction fees for Projects, listing upgrades and memberships. When you use a service that has a fee, you have an opportunity to review and accept the fees that you will be charged based on our schedule of Fees and Charges, which we may change from time to time and will update by placing on our Website. We may choose to temporarily change the fees for our services for promotional events (for example, discounts on memberships) or new services, and such changes are effective when we post a temporary promotional event or new service on the Websites, or as notified through promotional correspondence.</p>
+
+			<p>Unless otherwise stated, all fees are quoted in Zambian Kwacha.</p>
+		</div>
+		
+		
+		<div padding  style="width: 100%;" *ngIf="type=='FAQS'">
+			<p><b>Frequently Asked Questions</b></p>
+			<p>Last modified on 30 July 2020.</p>
+
+			<p><b>Client Section</b></p>
+
+			<p><b>How do I post a project</b><br>
+			To Post a project follow the steps below:<br>
+			1. Log in with your username and password<br>
+			2. Click on the + sign at the bottom of your screen<br>
+			3. Proceed to provide all the details in the three steps<br>
+			4. Finally deposit your budget for the project with us.<br>
+			5. On completion of the five steps your project is ready to receive bids
+			</p>
+
+			<p><b>How do I post a project</b><br>
+			To Post a project follow the steps below:<br>
+			1. Log in with your username and password<br>
+			2. Click on the + sign at the bottom of your screen<br>
+			3. Proceed to provide all the details in the three steps<br>
+			4. Finally deposit your budget for the project with us.<br>
+			5. On completion of the five steps your project is ready to receive bids
+			</p>
+
+			<p><b>How do I post a project</b><br>
+			To Post a project follow the steps below:<br>
+			1. Log in with your username and password<br>
+			2. Click on the + sign at the bottom of your screen<br>
+			3. Proceed to provide all the details in the three steps<br>
+			4. Finally deposit your budget for the project with us.<br>
+			5. On completion of the five steps your project is ready to receive bids
+			</p>
+
+			<p><b>How do I post a project</b><br>
+			To Post a project follow the steps below:<br>
+			1. Log in with your username and password<br>
+			2. Click on the + sign at the bottom of your screen<br>
+			3. Proceed to provide all the details in the three steps<br>
+			4. Finally deposit your budget for the project with us.<br>
+			5. On completion of the five steps your project is ready to receive bids
+			</p>
+
+			<p><b>How do I post a project</b><br>
+			To Post a project follow the steps below:<br>
+			1. Log in with your username and password<br>
+			2. Click on the + sign at the bottom of your screen<br>
+			3. Proceed to provide all the details in the three steps<br>
+			4. Finally deposit your budget for the project with us.<br>
+			5. On completion of the five steps your project is ready to receive bids
+			</p>
+
+			
+		</div>
+	</div>
+</ion-content>

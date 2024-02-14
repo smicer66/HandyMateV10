@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))"><!--background-color:#232D4B !important;-->
+    <ion-title style="color: #fff !important; text-align: right; font-size: 1.5rem">
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem" *ngIf="!(replyMessage!=undefined && replyMessage!=null)">Open Ticket</span>
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem" *ngIf="(replyMessage!=undefined && replyMessage!=null)">Reply Support Ticket</span>
+	</ion-title>
+	<ion-buttons start>
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden">  
+			<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important">-->
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div> 
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="">
+	<div class="main-content">
+		<ion-grid style="padding: 0px !important; padding-left: 10px !important; padding-right: 10px !important">
+			<div ion-row justify-content-center style="padding-bottom:20px !important; padding-top:10px !important">
+			  <div style="text-align: left; font-size: 1.2em; color: #fff !important; font-weight: bold !important" col-12 *ngIf="!(replyMessage!=undefined && replyMessage!=null)">Raise A Support Ticket</div>
+			  <div style="text-align: left; font-size: 1.2em; color: #fff !important; font-weight: 100 !important" col-12 *ngIf="!(replyMessage!=undefined && replyMessage!=null)">If you can't find a solution to your problems in our FAQs, you can submit a ticket by selecting the appropriate type of ticket below</div>
+			</div>
+			<div ion-row justify-content-center style="clear: both !important; padding-top: 0px !important;padding-left:  0px !important; padding-right: 0px !important;">
+				<form [formGroup]="raiseSupportTicketForm" col-12 justify-content-center style="clear: both !important; padding-left: 0px !important; padding-right: 0px !important;">
+					
+					<strong style="font-size: 1.2em !important; color:#fff !important;" *ngIf="(replyMessage!=undefined && replyMessage!=null)">Reply A Support Ticket Message</strong><br>
+					<div style="white-space: normal; font-size: 0.9em" *ngIf="(replyMessage!=undefined && replyMessage!=null)">
+						<strong style="font-size: 1.1em !important; font-weight: 100 !important; color:#fff !important;">Please provide appropriate information to enable us close out on this issue</strong><br>
+					</div>
+					
+					
+					<div *ngIf="!(replyMessage!=undefined && replyMessage!=null)" style="text-align: left; font-size: 1.1em; color: #fff !important; clear: both !important;" col-12>Ticket Is About Project:<span style="font-weight: bold !important; color: red !important">*</span></div>
+					<div *ngIf="!(replyMessage!=undefined && replyMessage!=null)" ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-select col-12 [(ngModel)]="raiseSupportTicketData.projectId" [formControl]="projectId" id="projectId" required>
+								<ion-option *ngFor="let project of projectList" value="{{project.id}}">{{project.title}}</ion-option>
+							</ion-select>
+						</div>
+					</div>
+					<div style="font-size:12px !important;" *ngIf="!(replyMessage!=undefined && replyMessage!=null)">&nbsp;</div>
+					
+					<div *ngIf="!(replyMessage!=undefined && replyMessage!=null)" style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Urgency of Problem:<span style="font-weight: bold !important; color: red !important">*</span></div>
+					<div *ngIf="!(replyMessage!=undefined && replyMessage!=null)" ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-select col-12 [(ngModel)]="raiseSupportTicketData.levelOfImportance" [formControl]="levelOfImportance" id="levelOfImportance">
+								<ion-option value="LOW">Low</ion-option>
+								<ion-option value="NORMAL">Normal</ion-option>
+								<ion-option value="HIGH">High</ion-option>
+								<ion-option value="VERY HIGH">Very High</ion-option>
+							</ion-select>
+						</div>
+					</div>
+					<div *ngIf="!(replyMessage!=undefined && replyMessage!=null)" style="font-size:12px !important;">&nbsp;</div>
+					
+					<div ion-row col-12 *ngIf="(replyMessage!=undefined && replyMessage!=null)" style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 5px !important; color: #fff !important">
+							Date: {{replyMessage.message_date_sent.substr(0, 16)}}HRS<br>
+							From: {{replyMessage.from_first_name}} {{replyMessage.from_last_name}} <span *ngIf="replyMessage.senderrole=='Administrator'">(Staff)</span><span *ngIf="replyMessage.senderrole=='Artisan'">(Mate)</span><span *ngIf="replyMessage.senderrole=='Private Client' || replyMessage.senderrole=='Corporate Client'">(Client)</span><br>
+							To: {{replyMessage.to_first_name}} {{replyMessage.to_last_name}} <span *ngIf="replyMessage.receiverrole=='Administrator'">(Staff)</span><span *ngIf="replyMessage.receiverrole=='Artisan'">(Mate)</span><span *ngIf="replyMessage.receiverrole=='Private Client' || replyMessage.receiverrole=='Corporate Client'">(Client)</span><br><br>
+							<span style="white-space: normal; padding:0px !important">
+							{{(replyMessage.message_body)}}
+							</span>
+						</div>
+					</div>
+					<div *ngIf="(replyMessage!=undefined && replyMessage!=null)" style="font-size:12px !important;">&nbsp;</div>
+					
+					<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12 *ngIf="!(replyMessage!=undefined && replyMessage!=null)">Provide details of your issue::<span style="font-weight: bold !important; color: red !important">*</span></div>
+					<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12 *ngIf="(replyMessage!=undefined && replyMessage!=null)">Your Reply:<span style="font-weight: bold !important; color: red !important">*</span></div>
+					<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-textarea rows={14} placeholder="" [(ngModel)]="raiseSupportTicketData.details" [formControl]="details" id="details" ></ion-textarea>
+						</div>
+					</div>
+					<div style="font-size:12px !important;">&nbsp;</div>
+					
+					
+					<!--<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Upload A Photo Of Your NRC:</div>
+					<div ion-row col-12 style="padding-top: 0px !important;padding-bottom: 0px !important;">
+						<div ion-col col-12 style="padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<div class="square" col-4>
+								<img  [src]="raiseSupportTicketData.attach_image_url1" height="100%" (click)="selectImage(1)" class="squareImage">
+							</div>
+							
+							<div class="square" col-4>
+								<img  [src]="raiseSupportTicketData.attach_image_url2" height="100%" (click)="selectImage(2)"  class="squareImage">
+							</div>
+							
+							<div class="square" col-4>
+								<img  [src]="raiseSupportTicketData.attach_image_url3" height="100%" (click)="selectImage(3)"  class="squareImage">
+							</div>
+						</div>
+					</div>
+					<div style="font-size:12px !important;">&nbsp;</div>-->
+					<ion-grid>
+						<ion-row>
+							<ion-col col-12 style="font-size: 1.8rem !important; padding: 0px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+								<ion-label style="text-align: left; font-size: 0.9em; color: #fff !important">Attachments:</ion-label>
+							</ion-col>
+							<ion-col col-4>
+								<div class="square" >
+									<img  [src]="raiseSupportTicketData.attach_image_url1" (click)="selectImage(1)" class="squareImage">
+								</div>
+							</ion-col>
+							<ion-col col-4>
+								<div class="square" >
+									<img  [src]="raiseSupportTicketData.attach_image_url2" (click)="selectImage(2)"  class="squareImage">
+								</div>
+							</ion-col>
+							<ion-col col-4>
+								<div class="square" >
+									<img  [src]="raiseSupportTicketData.attach_image_url3" (click)="selectImage(3)"  class="squareImage">
+								</div>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+					
+						
+							
+					<div ion-row col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important;">
+						<div ion-col col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
+							<button type="submit" ion-button full  color="secondary" style="border-radius: 5px !important; background-color: #F5B201" (click)="sendSupportTicket(raiseSupportTicketData, message, user, replyMessage)">Submit</button>
+						</div>
+					</div>
+				  
+				</form>
+			</div>
+		</ion-grid>
+	</div>
+</ion-content>
+
+<!--
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full color="secondary" large style="background-color: #232D4B !important" (click)="doRegisterStepOne(bookBusTicketData, user)">Update Profile</button>
+	</ion-toolbar>
+</ion-footer>-->

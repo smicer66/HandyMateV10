@@ -1,0 +1,39 @@
+page-settings {
+	ion-item{
+		padding-top: 7px !important;
+		padding-bottom: 7px !important;
+		border-bottom: 1px solid #dedede !important;
+	}
+	
+	ion-label
+	{
+		font-size: 22px !important;
+	}
+	
+	.scroll-content{
+		padding: 0px !important;
+	}
+	
+	.item-inner
+	{
+		border-bottom: 0px solid !important;
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+	
+	
+	
+	.odditem{
+		background-color: #8fa2db !important;
+	}
+
+	.evenitem{
+		background-color: #ffffff !important;
+	}
+}

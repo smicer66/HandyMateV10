@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))"><!--background-color:#232D4B !important;-->
+    <ion-title style="color: #fff !important; text-align: right; font-size: 1.5rem">
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem">My Reference</span>
+	</ion-title>
+	<ion-buttons start>
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden">  
+			<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important">-->
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div> 
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="">
+	<div class="main-content">
+	<ion-grid style="padding: 0px !important; padding-left: 10px !important; padding-right: 10px !important">
+		<div ion-row justify-content-center style="padding-bottom:20px !important; padding-top:10px !important">
+		  <div style="text-align: left; font-size: 1.2em; color: #fff !important; font-weight: bold !important" col-12>Update Your References/Referee</div>
+		  <div style="text-align: left; font-size: 1.1em; color: #fff !important; border-bottom: 1px solid #fff" col-12>Your references is anyone who can confirm to us about your character and skills. Information provided may be verified by our support staff</div>
+		</div>
+		<div ion-row justify-content-center style="clear: both !important; padding-top: 20px !important;padding-left:  0px !important; padding-right: 0px !important;">
+			<form [formGroup]="myGuarantorForm" col-12 justify-content-center style="clear: both !important; padding-left: 0px !important; padding-right: 0px !important;">
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important; clear: both !important;" col-12>First Name of Reference:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-input [(ngModel)]="myGuarantorData.first_name" style="" [formControl]="first_name" id="first_name" type="text" required placeholder=""></ion-input>
+					</div>
+				</div>
+				<div style="font-size:12px !important;">&nbsp;</div>
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Last Name of Reference:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-input [(ngModel)]="myGuarantorData.last_name" style="" [formControl]="last_name" id="last_name" type="text" required placeholder=""></ion-input>
+					</div>
+				</div>
+				<div style="font-size:12px !important;">&nbsp;</div>
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Other Name of Reference:</div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-input [(ngModel)]="myGuarantorData.other_name" style="" [formControl]="other_name" id="other_name" type="text" required placeholder=""></ion-input>
+					</div>
+				</div>
+				<div style="font-size:12px !important;">&nbsp;</div>
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Mobile Number of Reference:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-input [(ngModel)]="myGuarantorData.mobile_number" style="" [formControl]="mobile_number" id="mobile_number" type="tel" required placeholder=""></ion-input>
+					</div>
+				</div>
+				<div style="font-size:12px !important;">&nbsp;</div>
+				
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Home Address of Reference:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-input [(ngModel)]="myGuarantorData.home_address" [formControl]="home_address" id="home_address" type="text" required placeholder=""></ion-input>
+					</div>
+				</div>
+				<div style="font-size:12px !important;">&nbsp;</div>
+				
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>City Reference Lives In:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-input [(ngModel)]="myGuarantorData.city" [formControl]="city" id="city" type="text" required placeholder=""></ion-input>
+					</div>
+				</div>
+				<div style="font-size:12px !important;">&nbsp;</div>
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Country Reference Is Located:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-select col-12 [(ngModel)]="myGuarantorData.country_id" [formControl]="country_id"  (ionChange)="onSourceChange($event, 0)" id="country_id">
+							<ion-option *ngFor="let country of countryList" value="{{country.id}}">{{country.name}}</ion-option>
+						</ion-select>
+					</div>
+				</div>
+				<div style="font-size:12px !important;">&nbsp;</div>
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Province Reference Is Located:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-select col-12 [(ngModel)]="myGuarantorData.province_id" [formControl]="province_id" id="province_id" (ionChange)="onSourceChange($event, 1)">
+							<ion-option *ngFor="let province of provinceList" value="{{province.id}}">{{province.name}}</ion-option>
+						</ion-select>
+					</div>
+				</div>
+				<span><small style="color: #fff !important; float: right !important;">Select A Country First</small></span>
+				<div style="clear: both !important; font-size:12px !important;">&nbsp;</div>
+				
+				<div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>District Reference Is Located:<span style="font-weight: bold !important; color: red !important">*</span></div>
+				<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+					<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+						<ion-select col-12 [(ngModel)]="myGuarantorData.district_id" [formControl]="district_id" id="district_id">
+							<ion-option *ngFor="let district of districtList" value="{{district.id}}">{{district.lga_name}}</ion-option>
+						</ion-select>
+					</div>
+				</div>
+				<span><small style="color: #fff !important; float: right !important;">Select A Province First</small></span>
+				<div style="clear: both !important; font-size:12px !important;">&nbsp;</div>
+					
+			  
+						
+				<div ion-row col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 20px !important; padding-left: 0px !important; padding-right: 0px !important;">
+					<div ion-col col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
+						<button type="submit" ion-button full  color="secondary" style="border-radius: 5px !important; background-color: #F5B201" large *ngIf="from!=undefined && from!=null && from=='LoginPage'" (click)="doRegisterStepOne(myGuarantorData, user)">Finish <ion-icon name="save-outline"></ion-icon></button>
+						<button type="submit" ion-button full  color="secondary" style="border-radius: 5px !important; background-color: #F5B201" large *ngIf="!(from!=undefined && from!=null && from=='LoginPage')" (click)="doRegisterStepOne(myGuarantorData, user)">Save <ion-icon name="save-outline"></ion-icon></button>
+					</div>
+				</div>
+				
+				
+			  
+			</form>
+		</div>
+	</ion-grid>
+	</div>
+</ion-content>
+
+<!--
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full color="secondary" large style="background-color: #232D4B !important" (click)="doRegisterStepOne(bookBusTicketData, user)">Update Profile</button>
+	</ion-toolbar>
+</ion-footer>-->

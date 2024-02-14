@@ -1,0 +1,48 @@
+page-user-profile {
+	ion-content{
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+	
+	.smallbtnright{
+		font-size: 1.2em !important;
+	}
+	
+	ion-badge{
+		background-color: #c5d7eb !important;
+		color: #000 !important;
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+	
+	.item-md {
+		padding-left: 0px !important;
+	}
+	
+	.item-md.item-block .item-inner {
+		padding-right: 0px !important;
+	}
+	
+	.square{
+		background-color: #cfebfa !important;
+		font-size: 14px !important;
+		border: 1px #07a2f5 dashed;
+		height: 64px !important;
+		padding: 0px !important;
+		overflow: hidden !important;
+		text-align: center !important;
+		border: 1px dashed #232D4B !important;
+		float: left !important;
+	}
+	
+	.squareImage{
+		
+	}
+}
+
+

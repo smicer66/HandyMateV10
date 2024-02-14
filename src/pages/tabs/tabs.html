@@ -1,0 +1,31 @@
+<!--<ion-tabs #myTabs name="myTabs" class="clientTab" (ionChange)="onTabsChange()" *ngIf="(user!=undefined && user!=null && user.role_type!='Artisan')">
+  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="folder-open"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="" tabIcon="add"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="" tabIcon="mail"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="" tabIcon="contact"></ion-tab>
+  <ion-tab [root]="tab6Root" tabTitle="" tabIcon="settings"></ion-tab>
+</ion-tabs>
+<ion-tabs #myTabs name="myTabs" class="artisanTab" (ionChange)="onTabsChange()" *ngIf="(user!=undefined && user!=null && user.role_type=='Artisan')">
+  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="folder-open"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="" tabIcon="mail"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="" tabIcon="contact"></ion-tab>
+  <ion-tab [root]="tab6Root" tabTitle="" tabIcon="settings"></ion-tab>
+</ion-tabs>-->
+
+<ion-tabs #myTabs name="myTabs" class="clientTab" (ionChange)="onTabsChange()" *ngIf="(user!=undefined && user!=null && user.role_type!='Artisan')">
+  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="customhome"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="customfolder"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="" tabIcon="customadd"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="" tabIcon="custommail"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="" tabIcon="customcontact"></ion-tab>
+  <ion-tab [root]="tab6Root" tabTitle="" tabIcon="customsettings"></ion-tab>
+</ion-tabs>
+<ion-tabs #myTabs name="myTabs" class="artisanTab" (ionChange)="onTabsChange()" *ngIf="(user!=undefined && user!=null && user.role_type=='Artisan')">
+  <ion-tab [root]="tab1Root" tabTitle="" tabIcon="customhome"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="" tabIcon="customfolder"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="" tabIcon="custommail"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="" tabIcon="customcontact"></ion-tab>
+  <ion-tab [root]="tab6Root" tabTitle="" tabIcon="customsettings"></ion-tab>
+</ion-tabs>

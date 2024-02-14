@@ -1,0 +1,192 @@
+<!--
+  Generated template for the OneBankPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))"><!--background-color:#232D4B !important;-->
+    <ion-title style="color: #fff !important; text-align: right; font-size: 1.5rem">
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem">My Jobs</span>
+	</ion-title>
+	<ion-buttons start> 
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden">  
+			<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important">-->
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div> 
+	</ion-buttons>
+  </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="segmentSelected" (ionChange)=onSegmentChanged($event)>
+      <ion-segment-button value="all">
+        <span style="font-size: 0.9em">My Jobs</span>
+      </ion-segment-button>
+      <ion-segment-button value="open" (ionChange)=onSegmentChanged($event)>
+        <span style="font-size: 0.9em">Open Jobs</span>
+      </ion-segment-button>
+      <ion-segment-button value="completed" (ionChange)=onSegmentChanged($event)>
+        <span style="font-size: 0.9em">Completed</span>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding>
+	<div style="float: right !important; font-size: 1.1em !important; text-decoration: underline !important; color: #F5B201 !important; padding-right: 15px !important; padding-bottom: 10px !important;" (click)="refreshProjectList()">Refresh</div>
+	<div style="clear:both !important" [ngSwitch]="segmentSelected">
+		<ion-list  *ngSwitchCase="'all'" ion-row style="margin:0px !important; padding-right: 0px !important; margin-right:0px !important;">
+			<ion-item class="ion-item_1" *ngFor="let acct of currentProjectList; let t1=index" style="" [ngClass]="t1%3==0 ? 'evenitem': t1%3==1 ? 'odditem' : 'thirditem'"><!-- [style.background-color]="acct.bgColor" -->
+				<div col-12 style="float: left !important; font-size: 0.9em !important;" (click)="viewSingeProject(acct, user)">
+					<span style="color: #ffffff; padding: 0px !important; font-weight: bold">#{{acct.project_ref}} - {{acct.status}}</span><br>
+					<span style="color: #eb343d; padding: 0px !important; font-weight: bold" *ngIf="user!=undefined && user!=null && (user.role_type=='Private Client' || user.role_type=='Corporate Client') && acct.status=='IN PROGRESS' && acct.created_by_user_id==user.id && acct.completed_by_worker!=undefined && acct.completed_by_worker!=null && acct.completed_by_worker==1">Please Confirm Completion<br></span>
+					<strong style="font-size: 1.0em !important">{{acct.title}}</strong><br>
+					{{acct.bids.length}} Bid(s) | Starts {{acct.expected_start_date.split(' ')[0]}}<br>
+					Budget: {{acct.project_currency}}{{acct.budget}} 
+				</div>
+				<div col-12 style="float: left !important; font-size: 0.9em !important;">	
+					<div style="float: left !important"> 
+						<div style="float: left !important; background-color: transparent !important; border-radius: 50% !important; height: 24px !important; width: 24px !important; overflow: hidden"> 
+						<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important"> -->
+							<img *ngIf="!(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 24px !important; background-color: transparent !important">
+							<img *ngIf="(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)"  [src]="acct.created_by_user.current_image_url" style="width: 24px !important; background-color: transparent !important">
+						</div>
+						<div style="padding-top: 5px !important; float: left !important; background-color: transparent !important; overflow: hidden"> 
+							<span>Posted by {{acct.created_by_user.first_name}} {{acct.created_by_user.last_name}}</span>
+						</div>
+						<div style="clear: both; background-color: transparent !important; overflow: hidden"> 
+							<ionic3-star-rating #rating
+								activeIcon = "ios-star"
+								defaultIcon = "ios-star-outline"
+								activeColor = "{{t1%3==0 ? '#fcba03' : (t1%3==1 ? '#233B57' : '#fcba03')}}" 
+								defaultColor = "{{t1%3==0 ? '#d1d1d1' : (t1%3==1 ? '#ffffff' : '#d1d1d1')}}"
+								readonly="false" 
+								*ngIf="acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null"
+								rating="{{acct.created_by_user.total_user_rating/(acct.created_by_user.rating_count)}}"
+								fontSize = "15px">
+							</ionic3-star-rating>
+							<ionic3-star-rating #rating
+								activeIcon = "ios-star"
+								defaultIcon = "ios-star-outline"
+								activeColor = "{{t1%3==0 ? '#fcba03' : (t1%3==1 ? '#233B57' : '#fcba03')}}" 
+								defaultColor = "{{t1%3==0 ? '#d1d1d1' : (t1%3==1 ? '#ffffff' : '#d1d1d1')}}"
+								readonly="false" 
+								*ngIf="!(acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null)"
+								rating="0"
+								fontSize = "15px">
+							</ionic3-star-rating>
+						</div>
+					</div>
+					<!--<div style="float: right !important; font-size: 1.4em !important; cursor: pointer !important;"><ion-icon  (click)="showProjectMenu(acct, user)">...</ion-icon></div>-->
+				</div>
+			</ion-item>
+
+
+		</ion-list>
+
+
+
+		<ion-list  *ngSwitchCase="'open'" ion-row style="margin:0px !important; padding-right: 0px !important; margin-right:0px !important;">
+			<ion-item class="ion-item_1" style="" *ngFor="let acct of currentProjectList; let t1=index" [ngClass]="t1%3==0 ? 'evenitem': t1%3==1 ? 'odditem' : 'thirditem'"><!--*ngFor="let acct of accounts_list" [style.background-color]="acct.bgColor" -->
+				<div col-12 style="float: left !important; font-size: 1.0em !important;">
+					<span style="color: #ffffff; padding: 0px !important; font-weight: bold">#{{acct.project_ref}} - {{acct.status}}</span><br>
+					<span style="color: #eb343d; padding: 0px !important; font-weight: bold" *ngIf="user!=undefined && user!=null && (user.role_type=='Private Client' || user.role_type=='Corporate Client') && acct.status=='IN PROGRESS' && acct.created_by_user_id==user.id && acct.completed_by_worker!=undefined && acct.completed_by_worker!=null && acct.completed_by_worker==1">Please Confirm Completion<br></span>
+					<strong style="font-size: 1.0em !important">{{acct.title}}</strong><br>
+					{{acct.bids.length}} Bid(s) | Starts {{acct.expected_start_date.split(' ')[0]}}<br>
+					Budget: {{acct.project_currency}}{{acct.budget}}
+				</div>
+				<div col-12 style="float: left !important; font-size: 0.9em !important;">
+					<div style="float: left !important"> 
+						<div style="float: left !important; background-color: transparent !important; border-radius: 50% !important; height: 24px !important; width: 24px !important; overflow: hidden"> 
+						<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important"> -->
+							<img *ngIf="!(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 24px !important; background-color: transparent !important">
+							<img *ngIf="(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)"  [src]="acct.created_by_user.current_image_url" style="width: 24px !important; background-color: transparent !important">
+						</div>
+						<div style="padding-top: 5px !important; float: left !important; background-color: transparent !important; overflow: hidden"> 
+							<span>Posted by {{acct.created_by_user.first_name}} {{acct.created_by_user.last_name}}</span>
+						</div>
+						<div style="clear: both; background-color: transparent !important; overflow: hidden"> 
+							<ionic3-star-rating #rating
+								activeIcon = "ios-star"
+								defaultIcon = "ios-star-outline"
+								activeColor = "{{t1%3==0 ? '#fcba03' : (t1%3==1 ? '#233B57' : '#fcba03')}}" 
+								defaultColor = "{{t1%3==0 ? '#d1d1d1' : (t1%3==1 ? '#ffffff' : '#d1d1d1')}}"
+								readonly="false" 
+								*ngIf="acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null"
+								rating="{{acct.created_by_user.total_user_rating/(acct.created_by_user.rating_count)}}"
+								fontSize = "15px">
+							</ionic3-star-rating>
+							<ionic3-star-rating #rating
+								activeIcon = "ios-star"
+								defaultIcon = "ios-star-outline"
+								activeColor = "{{t1%3==0 ? '#fcba03' : (t1%3==1 ? '#233B57' : '#fcba03')}}" 
+								defaultColor = "{{t1%3==0 ? '#d1d1d1' : (t1%3==1 ? '#ffffff' : '#d1d1d1')}}"
+								readonly="false" 
+								*ngIf="!(acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null)"
+								rating="0"
+								fontSize = "15px">
+							</ionic3-star-rating>
+						</div>
+					</div>
+					<!--<div style="float: right !important; font-size: 1.4em !important; cursor: pointer !important;"><ion-icon  (click)="showProjectMenu(t1)">...</ion-icon></div>-->
+				</div>
+			</ion-item>
+
+		</ion-list>
+
+
+
+		<ion-list  *ngSwitchCase="'completed'" ion-row style="margin:0px !important; padding-right: 0px !important; margin-right:0px !important;">
+			<ion-item class="ion-item_1" style="" *ngFor="let acct of currentProjectList; let t1=index" [ngClass]="t1%3==0 ? 'evenitem': t1%3==1 ? 'odditem' : 'thirditem'"><!--*ngFor="let acct of accounts_list" [style.background-color]="acct.bgColor" -->
+				<div col-12 style="float: left !important; font-size: 1.0em !important;">
+					<span style="color: #ffffff; padding: 0px !important; font-weight: bold">#{{acct.project_ref}} - {{acct.status}}</span><br>
+					<span style="color: #eb343d; padding: 0px !important; font-weight: bold" *ngIf="user!=undefined && user!=null && (user.role_type=='Private Client' || user.role_type=='Corporate Client') && acct.status=='IN PROGRESS' && acct.created_by_user_id==user.id && acct.completed_by_worker!=undefined && acct.completed_by_worker!=null && acct.completed_by_worker==1">Please Confirm Completion<br></span>
+					<strong style="font-size: 1.0em !important">{{acct.title}}</strong><br>
+					{{acct.bids.length}} Bid(s) | Starts {{acct.expected_start_date.split(' ')[0]}}<br>
+					Budget: ZMW{{acct.budget}}
+				</div>
+				<div col-12 style="float: left !important; font-size: 0.9em !important;">
+					<div style="float: left !important"> 
+						<div style="float: left !important; background-color: transparent !important; border-radius: 50% !important; height: 24px !important; width: 24px !important; overflow: hidden"> 
+						<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important"> -->
+							<img *ngIf="!(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 24px !important; background-color: transparent !important">
+							<img *ngIf="(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)"  [src]="acct.created_by_user.current_image_url" style="width: 24px !important; background-color: transparent !important">
+						</div>
+						<div style="padding-top: 5px !important; float: left !important; background-color: transparent !important; overflow: hidden"> 
+							<span>Posted by {{acct.created_by_user.first_name}} {{acct.created_by_user.last_name}}</span>
+						</div>
+						<div style="clear: both; background-color: transparent !important; overflow: hidden"> 
+							<ionic3-star-rating #rating
+								activeIcon = "ios-star"
+								defaultIcon = "ios-star-outline"
+								activeColor = "{{t1%3==0 ? '#fcba03' : (t1%3==1 ? '#233B57' : '#fcba03')}}" 
+								defaultColor = "{{t1%3==0 ? '#d1d1d1' : (t1%3==1 ? '#ffffff' : '#d1d1d1')}}"
+								readonly="false" 
+								*ngIf="acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null"
+								rating="{{acct.created_by_user.total_user_rating/(acct.created_by_user.rating_count)}}"
+								fontSize = "15px">
+							</ionic3-star-rating>
+							<ionic3-star-rating #rating
+								activeIcon = "ios-star"
+								defaultIcon = "ios-star-outline"
+								activeColor = "{{t1%3==0 ? '#fcba03' : (t1%3==1 ? '#233B57' : '#fcba03')}}" 
+								defaultColor = "{{t1%3==0 ? '#d1d1d1' : (t1%3==1 ? '#ffffff' : '#d1d1d1')}}"
+								readonly="false" 
+								*ngIf="!(acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null)"
+								rating="0"
+								fontSize = "15px">
+							</ionic3-star-rating>
+						</div>
+					</div>
+					
+					<!--<span style="float: right !important; font-size: 1.4em !important; cursor: pointer !important;"><ion-icon  (click)="showProjectMenu(t1)">...</ion-icon></span>-->
+				</div>
+			</ion-item>
+
+
+		</ion-list>
+	</div>
+
+</ion-content>

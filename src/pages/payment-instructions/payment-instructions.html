@@ -1,0 +1,93 @@
+<!--<ion-header>
+
+  <ion-navbar style="background-color: #232D4B; color: #fff !important">
+    <ion-title>
+		<span style="float: left !important; color: #fff !important; font-size: 0.8em !important">Escrow Project Budget</span>
+		<span style="float: right !important; color: #fff !important; font-size: 0.8em !important"><ion-icon name="close" (click)="dismissModal()"></ion-icon></span>
+	</ion-title>
+  </ion-navbar>-->
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="segmentSelected" (ionChange)=onSegmentChanged($event)>
+      <ion-segment-button value="offlinemobilemoney">
+        <span style="font-size: 0.9em !important">Mobile Money</span>
+      </ion-segment-button>
+      <ion-segment-button value="bevura">
+        <span style="font-size: 0.9em !important">Bevura</span>
+      </ion-segment-button>
+      <ion-segment-button value="mobilemoney">
+        <span style="font-size: 0.9em !important">Flutterwave</span>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+<!--</ion-header>-->
+
+<ion-content>
+	<div style="clear:both !important; height: 100% !important" [ngSwitch]="segmentSelected">
+		<iframe  height="100%" width="100%" [src]="mobilemoneyurl" *ngIf="segmentSelected=='mobilemoney' && (paymentOptions['FLUTTERWAVE']!=undefined && paymentOptions['FLUTTERWAVE']!=null)" style="margin-top: 40px !important"></iframe>
+		<iframe  height="100%" width="100%" [src]="probasepayurl" *ngIf="segmentSelected=='bevura' && (paymentOptions['BEVURAPAY']!=undefined && paymentOptions['BEVURAPAY']!=null)" style="margin-top: 40px !important"></iframe>
+		<ion-list  *ngSwitchCase="'offlinemobilemoney'" ion-row style="margin:0px !important; padding-right: 0px !important; margin-right:0px !important;">
+			<ion-item style="margin-top: 50px !important">
+				<span style="white-space: normal;padding: 0px !important;font-size: 0.9em !important;">
+					
+					Dear {{user.first_name}} {{user.last_name}},<br>
+					<span *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)" style="padding: 0px !important;">Pay the Sum Of {{transaction.currency}}{{transaction.total_amount}} using mobile money into our merchant account:</span>
+					<span *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)" style="padding: 0px !important;">Pay the Sum Of {{transactionUpdate.currency}}{{(transactionUpdate.budget + transactionUpdate.vat + transactionUpdate.service_charge)}} using mobile money into our merchant account:</span>
+					<br><br>
+					
+					<div style="clear: both !important">
+						<div style="float: left !important;">
+							<img src="assets/imgs/airtel.jpeg" style="float: left !important;">
+						</div>
+						<div style="float: right !important; padding-top: 0px !important; padding-left: 5px !important; text-align:right !important">
+							<strong>AIRTEL:</strong><br> 889001247<br>(HANDYMATE LIMITED)
+						</div>
+						<div style="clear: both !important; padding-top: 15px !important; padding-left: 5px !important; text-align: center !important">
+							---------<strong>OR</strong>---------
+						</div>
+						<div style="float: left !important;">
+							<img src="assets/imgs/mtn.png" style="float: left !important;">
+						</div>
+						<div style="float: right !important; padding-top: 0px !important; padding-left: 5px !important; text-align:right !important">
+							<strong>MTN:</strong><br> +260761041607
+						</div>
+					</div>
+					<br>
+					
+					<div style="clear: both !important; padding-top: 15px !important">
+						Quote or provide the payment code 
+						<span *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)" style="padding: 0px !important;">{{transaction.reference_no}}</span>
+						<span *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)" style="padding: 0px !important;">{{transactionUpdateOrderRef}}</span> to any of our support staff to confirm your payment.<br><br>
+						Payment is for the project - {{project.title}}<br><br>
+						<u><strong>Fee Breakdown</strong></u><br>
+						<span style="padding: 0px !important;float: left !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)">Project Budget ({{transaction.currency}}): </span><span style="float: right !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)">{{project.budget}}</span><br>
+						<span style="padding: 0px !important;float: left !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)">VAT ({{transaction.currency}}): </span><span style="float: right !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)">{{project.vat}}</span><br>
+						<span style="padding: 0px !important;float: left !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)">Service Charge ({{transaction.currency}}): </span><span style="float: right !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)">{{project.service_charge}}</span><br>
+						
+						<span style="padding: 0px !important;padding: 0px !important;float: left !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)">Budget Update ({{transactionUpdate.currency}}): </span><span style="float: right !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)">{{transactionUpdate.budget}}</span>
+						<span style="padding: 0px !important;float: left !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)">VAT Update ({{transactionUpdate.currency}}): </span><span style="float: right !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)">{{transactionUpdate.vat}}</span>
+						<span style="padding: 0px !important;float: left !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)">Service Charge ({{transactionUpdate.currency}}): </span><span style="float: right !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)">{{transactionUpdate.service_charge}}</span>
+						<hr style="color: #000 !important; border-bottom: 1px solid #000">
+						<span style="padding: 0px !important;float: left !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)"><b>TOTAL ({{transaction.currency}}):</b> </span><span style="float: right !important; border: 0px !important" *ngIf="!(transactionUpdate!=undefined && transactionUpdate!=null)"><b>{{(project.budget + project.vat + project.service_charge)}}</b></span>
+						<span style="padding: 0px !important;float: left !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)"><b>TOTAL ({{transactionUpdate.currency}}):</b> </span><span style="float: right !important; border: 0px !important" *ngIf="(transactionUpdate!=undefined && transactionUpdate!=null)"><b>{{(transactionUpdate.budget + transactionUpdate.vat + transactionUpdate.service_charge)}}</b></span>
+						<br><br><br>
+						
+					</div>
+				</span>
+			</ion-item>
+		</ion-list>
+		
+		
+		<!--*<iframe  *ngSwitchCase="'probasewallet'" height="100%" width="100%" [src]="probasepayurl"></iframe>
+		
+		<ion-list  *ngSwitchCase="'mywallet'" ion-row style="margin:0px !important; padding-right: 0px !important; margin-right:0px !important;">
+			<ion-item>
+				
+			</ion-item>
+		</ion-list>-->
+	</div>
+</ion-content>
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full color="secondary" style="background-color: #232D4B !important" (click)="dismissModal()" large >Close</button>
+	</ion-toolbar>
+</ion-footer>

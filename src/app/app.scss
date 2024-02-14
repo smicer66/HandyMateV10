@@ -1,0 +1,295 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@import '../theme/fonts';
+.fixed-content{
+	background-color: #fff !important;
+}
+
+.list-md{
+	background-color: #fff !important;
+	background-image: none !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+.item-inner {
+	border-bottom: 0px !important;
+}
+
+ion-navbar {
+	background-image: url(assets/imgs/header_bg.jpg);
+}
+
+.clientTab > .tabbar .tab-button {
+	background-color: #deeeff !important;
+	border-left: 0px solid #000;
+	border-right: 0px solid #000;
+}
+
+.artisanTab > .tabbar .tab-button {
+	background-color: #e0e0e0 !important;
+	border-left: 0px solid #000;
+	border-right: 0px solid #000;
+}
+
+.modal-wrapper{
+	position: absolute;
+	width: 90vw;
+	height: 90vh;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border: 1;
+	background-color: '#0000';
+	background: transparent !important;
+}
+
+iframe{
+	overflow-y: scroll !important;
+}
+
+ion-backdrop {
+  visibility: visible;
+}
+
+ion-modal{
+	background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.modal-wrapper .button-inner{
+	border-right: 0px solid rgba(60, 61, 63, 0.3) !important;
+}
+
+.picker-toolbar{
+	background-color: #232D4B !important;
+	color: #fff !important;
+}
+
+.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+	background-image: none !important;
+}
+
+button .list span {
+	border-right: 0px !important;
+}
+
+
+page-bid-project #period_period{
+	text-align: right !important;
+}
+
+page-bid-project .text-input{
+	text-align: right !important;
+}
+
+
+page-new-context-menu .scroll-content{
+	padding: 0px !important;
+}
+
+page-new-context-menu ion-item{
+	border-bottom: 1px solid #dedede;
+}
+
+page-new-context-menu ion-item:nth-child(even) {
+	background: #C1CAE3 !important;
+}
+
+
+
+	
+page-bid-project #bid_details textarea{
+	text-align: left !important;
+}
+
+
+page-rate-project ion-toolbar{
+	padding: 0px !important;
+}
+
+
+.country-select
+{
+	padding: 0px !important;
+}
+.country-select ion-item:nth-child(even) {
+	background: #C1CAE3 !important;
+}
+
+.segment-activated{
+	background: #c5d7eb !important;
+}
+
+.segment-button{
+	color: #0354ad !important;
+	border-radius: 5px !important;
+}
+
+
+.segment-button > span{
+	font-size: 1.1em !important;
+}
+
+.tabs-md .tabbar{
+	background-color: #e0e0e0 !important;
+}
+
+.toastError{
+	.toast-wrapper {
+		background-color: #f50707 !important;
+		color: #fff !important;
+	}
+}
+
+.toastSuccess{
+	.toast-wrapper {
+		background-color: #04b318 !important;
+		color: #fff !important;
+	}
+}
+
+.toastInfo{
+	.toast-wrapper {
+		background-color: #1f83db !important;
+		color: #fff !important;
+	}
+}
+
+
+.alert-head{
+	padding: 10px !important;
+    font-size: 24px !important;
+    background-color: #232D4B !important;
+    color: #fff !important;
+}
+
+.alert-title{
+	font-size: 16px !important;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon{
+	padding: 10px;
+}
+
+.tabs-md[tabsLayout=icon-hide] .tab-button, .tabs-md[tabsLayout=title-hide] .tab-button, .tabs-md .tab-button.icon-only, .tabs-md .tab-button.has-title-only {
+    padding: 0 5px !important;
+}
+
+.tab-button .ion-icon{
+	font-size: 18px !important;
+}
+
+.tab-button[aria-selected=true] ion-icon::before {
+    background-color: #C6E1FF !important;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px !important;
+    border-radius: 30% !important;
+    padding-bottom: 5px !important;
+}
+
+.tabs-md .tab-button-icon{
+	font-size: 2.0rem !important;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon
+{
+	padding: 0px !important;
+}
+
+.alert-md .alert-button:nth-child(even){
+	background-color: #AAEAAA !important;
+	font-weight: bold !important;
+	border-radius: 5px !important;
+	color: #000 !important;
+}
+
+.alert-md .alert-button:nth-child(odd){
+	background-color: #FFBBBB !important;
+	font-weight: bold !important;
+	border-radius: 5px !important;
+	color: #000 !important;
+}
+
+.alert-button-group{
+	background-color: #F0F0F0 !important
+}
+
+.corporateArtisanThick{
+	background-color: #069129 !important;
+}
+
+.artisanThick{
+	background-color: #9d03fc !important;
+}
+
+
+.ion-ios-customhome-outline,
+.ion-ios-customhome,.ion-md-customhome,.ion-md-customhome-outline
+{
+	content: url('../assets/imgs/tabs/home.png');
+	width: 8px !important;
+}
+
+.ion-ios-customfolder-outline,
+.ion-ios-customfolder,.ion-md-customfolder,.ion-md-customfolder-outline
+{
+	content: url('../assets/imgs/tabs/allprojects.png');
+	width: 8px !important;
+}
+
+
+.ion-ios-customadd-outline,
+.ion-ios-customadd,.ion-md-customadd,.ion-md-customadd-outline
+{
+	content: url('../assets/imgs/tabs/addproject.png');
+	width: 8px !important;
+}
+
+.ion-ios-custommail-outline,
+.ion-ios-custommail,.ion-md-custommail,.ion-md-custommail-outline
+{
+	content: url('../assets/imgs/tabs/messages.png');
+	width: 8px !important;
+}
+ 
+.ion-ios-customcontact-outline,
+.ion-ios-customcontact,.ion-md-customcontact,.ion-md-customcontact-outline
+{
+	content: url('../assets/imgs/tabs/contact.png');
+	width: 8px !important;
+}
+
+
+.ion-ios-customsettings-outline,
+.ion-ios-customsettings,.ion-md-customsettings,.ion-md-customsettings-outline
+{
+	content: url('../assets/imgs/tabs/settings.png');
+	width: 8px !important;
+}
+
+
+div{
+	font-face: 'OpenSansCondensed-Light'
+}
+
+span{
+	font-face: 'OpenSansCondensed-Light'
+}

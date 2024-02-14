@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))"><!--background-color:#232D4B !important;-->
+    <ion-title style="color: #000 !important; text-align: right; font-size: 1.5rem">
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem" *ngIf="project!=undefined && project!=null">Edit Project - 1/3</span>
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem" *ngIf="!(project!=undefined && project!=null)">New Project - 1/3</span>
+	</ion-title>
+	<ion-buttons start>
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden"> 
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div>
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="">
+    <form [formGroup]="newProjectDataThreeForm">
+		<ion-grid>
+			<ion-row>
+				<ion-col col-12 style="font-size: 1.8rem !important; padding: 0px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+					<ion-label>What job/project do you want to be handled for you?</ion-label>
+				</ion-col>
+				<ion-col col-6 *ngFor="let subskill of sub_skills; let t1=index" >
+					<div class="square" >
+						<img  [src]="subskill.path_url" height="100%" (click)="selectImage(subskill.id)" class="squareImage">
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		
+		
+    </form>
+</ion-content>

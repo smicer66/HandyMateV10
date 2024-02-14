@@ -1,0 +1,48 @@
+
+<ion-header>
+
+  <ion-navbar style="background-color: #000; color: #fff !important">
+    <ion-title>
+		<span style="float: left !important; color: #fff !important; font-size: 0.8em !important">Bid On Project</span>
+		<span style="float: right !important; color: #fff !important; font-size: 0.8em !important"><ion-icon name="close" (click)="dismissModal()"></ion-icon></span>
+	</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="">
+    <form [formGroup]="bidDataForm">
+		<ion-item padding-right>
+			<strong style="font-size: 0.8em !important">Your Bid On This Project</strong><br>
+			<span style="font-size: 0.8em !important; white-space: normal">You can update your bid after bidding before the project owner selects a winning bid</span>
+		</ion-item>
+      <ion-list>
+        <ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.2em !important; padding: 10px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+			<ion-label floating>Bid Amount(ZMW):</ion-label>
+			<ion-input [(ngModel)]="bidDataFormData.bid_amount" [formControl]="bid_amount" style="text-align: left !important" id="bid_amount" type="tel" required placeholder=""></ion-input>
+        </ion-item>
+		<ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.2em !important; padding: 10px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+			<ion-label floating>Delivery Period:</ion-label>
+			<ion-input style="background-color: #C1CAE3 !important; font-size: 1.2em !important; padding: 1px !Important; text-align: left !important;" [(ngModel)]="bidDataFormData.period_period" formControlName="period_period" id="period_period" type="tel" required placeholder=""></ion-input>
+		</ion-item>
+		<ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.2em !important; padding: 10px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+			<ion-label floating>Delivery Period Type:</ion-label>
+			<ion-select [(ngModel)]="bidDataFormData.period_period_type" placeholder="--Select Period Type--" [formControl]="period_period_type" id="period_period_type">
+				<ion-option value="HOURS">Hour(s)</ion-option>
+				<ion-option value="DAYS" selected>Day(s)</ion-option>
+		  </ion-select>
+		</ion-item>
+        <ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.2em !important; padding: 15px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+          <ion-label floating>Bid Details</ion-label>
+          <ion-textarea rows={4} placeholder="" [(ngModel)]="bidDataFormData.bid_details" [formControl]="bid_details" id="bid_details" ></ion-textarea>
+        </ion-item>
+
+      </ion-list>
+    </form>
+</ion-content>
+
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full color="secondary" style="background-color: #232D4B !important" (click)="submitProjectBid(projectDetails, existingBid)" large >Post Bid</button>
+	</ion-toolbar>
+</ion-footer>

@@ -1,0 +1,80 @@
+<ion-content class="">
+
+	<div class="main-content">
+		<ion-grid style="padding: 0px !important; padding-left: 30px !important; padding-right: 30px !important">
+			<div ion-row justify-content-center style="padding-bottom:20px !important; padding-top:80px !important">
+			  <div style="text-align: center" col-12><img class="login_logo" style="height: 64px" src="assets/imgs/logo_no_bg.png"></div>
+			  <div style="text-align: center; font-size: 1.3em; font-weight: bold" col-12>&nbsp;</div>
+			  <div style="text-align: center; font-size: 1.2em; color: #fff !important; font-weight: bold !important" col-12>Login</div>
+			  <div style="text-align: center; font-size: 1.1em; color: #fff !important" col-12>Please login to continue</div>
+			</div>
+			<div ion-row justify-content-center style="padding-top: 20px !important;padding-left:  0px !important; padding-right: 0px !important;">
+				<form [formGroup]="authForm" (ngSubmit)="userLogin(loginData)" col-12 justify-content-center style="padding-left: 0px !important; padding-right: 0px !important;">
+					
+					<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-4 style="background-color: #485A70 !important; padding-right: 0px !important; padding-top: 7px !important; padding-bottom: 0px !important">
+							<ion-avatar item-start style="padding: 7px !Important; background-color: #485A70 !important; padding-top: 0px !Important; padding-right: 0px !important; padding-bottom: 0px !Important;">
+								<img src="assets/imgs/country/{{countryFlag}}" style="float: left !important;">
+								<a href="javascript:void(0);" (click)="openMobileNumberModal()"  style="float: right !important;  font-size: 1.4rem !important; color: #C3CAD2 !important; text-decoration: underline; padding-top: 5px">{{countryCode}}</a>
+							</ion-avatar>
+						</div>
+						<div ion-col col-8 style="padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-input value="" style="background-color: #485A70 !important; color: #C3CAD2 !important; font-size: 1.4rem !important; padding: 0px !Important; padding-left: 0px !important; padding-top: 0px !important" [(ngModel)]="loginData.username" [formControl]="username" id="username" type="tel" required placeholder="Phone Number"></ion-input>
+						</div>
+					</div>
+					<!--<div style="font-size:12px !important; text-align: center !important; color: #C1C1C1">Enter the last 9 digits of your mobile phone number</div>-->
+					<div style="font-size:12px !important;">&nbsp;</div>
+					
+					
+					<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-4 style="background-color: #485A70 !important; padding-right: 0px !important; padding-top: 7px !important; padding-bottom: 0px !important">
+							<ion-avatar item-start style="padding: 7px !Important; background-color: #485A70 !important; padding-top: 0px !important; padding-right: 0px !important; padding-bottom: 0px !Important;">
+								<img src="assets/imgs/padlock.svg" style="float: left !important; height: 20px !important">
+							</ion-avatar>
+						</div>
+						<div ion-col col-6 style="padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-input value="" style="text-align: center !important; color: #C3CAD2 !important; background-color: #485A70 !important; font-size: 1.4rem !important; padding: 7px !Important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important; " [(ngModel)]="loginData.password" [formControl]="password" id="password" type="{{passwordtype}}" required placeholder="Password"></ion-input>
+						</div>
+						<div ion-col col-2 style="padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<button ion-button clear class="eye-icon-btn" type="button" item-right (click)="managePassword()" style="text-align: right !important; padding: 0px !important; font-size: 0.9rem !important"><ion-icon style="padding-top: 0px !important; font-size: 0.9rem; font-family: 'OpenSansCondensed-Light'">{{passeye}}</ion-icon></button>
+						</div>
+					</div>
+					
+					
+					<!--<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-3 style="background-color: #485A70 !important; padding-right: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-avatar item-start style="padding: 7px !Important; background-color: #485A70 !important; padding-right: 0px !important; padding-bottom: 0px !Important;">
+								<img src="assets/imgs/padlock.svg" style="float: left !important; height: 24px !important">
+							</ion-avatar>
+						</div>
+						<div ion-col col-7 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-input value="" style="text-align: center !important; color: #C3CAD2 !important; background-color: #485A70 !important; font-size: 1.8rem !important; padding: 7px !Important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important; " [(ngModel)]="loginData.password" [formControl]="password" id="password" type="{{passwordtype}}" required placeholder="Password"></ion-input>
+						</div>
+						<div ion-col col-2 style=" padding-top: 5px !important; padding-bottom: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<button ion-button clear class="eye-icon-btn" type="button" item-right (click)="managePassword()" style="text-align: right !important; padding: 0px !important"><ion-icon style="padding-top: 10px !important; font-size: 0.5em">{{passeye}}</ion-icon></button>
+						</div>
+					</div>-->
+					<div style="font-size: 1.0em !important; text-align: center !important; color: #fff; font-weight: bold !important; padding: 10px !important; text-decoration: underline; " (click)="moveToForgotPassword()">Forgot Password</div>
+					<div style="font-size:12px !important;">&nbsp;</div>
+					
+					<div ion-row col-12 style="border-radius: 5px !important; background-color: #F5B201 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
+						<div ion-col col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
+							<button type="submit" ion-button full  color="secondary" style="border-radius: 5px !important; background-color: #F5B201" [disabled]="!authForm.valid"  (click)="login(loginData)">Log In</button>
+						</div>
+					</div>
+					<div col-12 padding text-left class="form-bottom-text" style="color: #fff !important; font-size: 1.0em !important; float: left !important; text-align: center !important">Don't have an account? <a href="javascript:void(0);" (click)="moveToRegister()"  style="font-size: 1.1em !important; color: #fff !important; text-decoration: underline !important; font-weight: bold !important">Register</a></div>
+					
+				</form>
+			</div>
+			
+			<!--<div ion-row justify-content-center style="padding: 0px !important; padding-top:10px !important">
+				<div ion-col col-12 style="padding: 0px !important">
+					<div col-12 style="" >
+						<div col-12 padding text-left class="form-bottom-text" style="color: #fff !important; font-size: 1.1em !important; float: left !important; text-align: left !important">Don't have an account? <a href="javascript:void(0);" (click)="moveToRegister()"  style="font-size: 1.1em !important; color: #fff !important; text-decoration: underline">Register</a></div>
+						<div col-6 padding text-right class="form-bottom-text" style="font-size: 1.1em !important; float: right !important; text-align: left !important"><a href="javascript:void(0);" (click)="moveToForgotPassword()"  style="font-size: 1.1em !important; color: #98A361 !important; text-decoration: underline">Forgot Password?</a></div>
+					</div>
+				</div>
+			</div>-->
+		</ion-grid>
+	</div>
+</ion-content>

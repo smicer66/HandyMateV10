@@ -1,0 +1,111 @@
+page-new-project-step-four {
+	.text-input{
+		background-color: #C1CAE3 !important;
+		padding: 7px !important;
+		text-align: left;
+		font-size: 0.9em;
+		
+	}
+	
+	ion-label{
+		border: 0px !important;
+		color: #000 !important;
+	}
+	
+	.label-md[stacked], .label-md[floating]
+	{
+		margin-left: 5px !important;
+		margin-top: 5px !important;
+	}
+	
+	ion-datetime{
+		background-color: #C1CAE3 !important;
+		padding: 14px !important;/**/
+		text-align: left;
+		font-size: 0.9em;
+		width: 100%;
+		
+	}
+	
+	textarea{
+		height: 40vh !important;
+		font-size: 0.9em;
+	}
+	
+	ion-select{
+		background-color: #C1CAE3 !important;
+		padding: 21px !important;
+		padding-left: 14px !important;
+		font-size: 0.9em !important;
+	}
+	
+	.item-md.item-block .item-inner
+	{
+		border: 0px solid !important;
+	}
+	
+	
+	
+	.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+	}
+	
+	.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+	}
+	
+	.item-md ion-avatar ion-img, .item-md ion-avatar img {
+		border-radius: 10%
+	}
+	
+	ion-input, ion-textarea, ion-datetime {
+		background-color: #C1CAE3 !important;
+	}
+	
+	.item-md.item-block .item-inner {
+		padding-right: 0px !important;
+	}
+	
+	ion-list ion-item{
+		padding: 0px !important;
+		padding-left: 10px !important;
+	}
+	
+	.list span {
+		border-right: 0px !important;
+	}
+	
+	ion-footer .toolbar
+	{
+		padding: 0px !important;
+	}
+	
+	.list-md > .item-block:last-child ion-label, .list-md > .item-block:last-child .item-inner, .list-md > .item-wrapper:last-child ion-label, .list-md > .item-wrapper:last-child .item-inner {
+		margin-right: 0px !important;
+	}
+	
+	.square{
+		background-color: #cfebfa !important;
+		font-size: 14px !important;
+		border: 1px #07a2f5 dashed;
+		height: 64px !important;
+		padding: 0px !important;
+		overflow: hidden !important;
+		text-align: center !important;
+		border: 1px dashed #232D4B !important;
+	}
+	
+	.squareImage{
+		
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+}

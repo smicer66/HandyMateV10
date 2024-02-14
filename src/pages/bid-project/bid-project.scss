@@ -1,0 +1,32 @@
+page-bid-project {
+	ion-content{
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+
+
+	textarea.text-input
+	{
+		height: 40vh;
+	}
+	
+	ion-toolbar
+	{
+		padding: 0px !important;
+	}
+	
+	ion-input .text-input{
+		text-align: left !important;
+	}
+	
+	iframe{
+		border: 0px !important;
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+}

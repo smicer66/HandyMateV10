@@ -1,0 +1,43 @@
+page-payment-instructions {
+	ion-content{
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+	
+	iframe{
+		border: 0px !important;
+		margin-top: 0px !important;
+	}
+	
+	
+	.segment-ios .segment-button.segment-activated{
+		background-color: #f7f7f7 !important;
+		color: #000 !important;
+		border-color: #f7f7f7 !important;
+		font-weight: bold !important;
+	}
+	
+	.segment-button{
+		border-color: #f7f7f7 !important;
+		font-size: 14px !important;
+		
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+	
+	.toolbar {
+		background-color: #ffffff !important;
+	}
+	
+	
+	
+}
+.modal-wrapper {
+		width: 100vw;
+		height: 100vh;
+	}

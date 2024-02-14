@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))"><!--background-color:#232D4B !important;-->
+    <ion-title style="color: #000 !important; text-align: right; font-size: 1.5rem">
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem">Contact Us</span>
+	</ion-title>
+	<ion-buttons start>
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden">  
+			<!--<img src="assets/imgs/icon_user.png" style="height: 32px !important; background-color: transparent !important">-->
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div> 
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="">
+  <!--bg-img<div class="main-content">
+
+    <div padding  style="width: 100%;">color:#fff !important-->
+    <form [formGroup]="contactUsForm">
+		
+		<ion-item class="titleHeader">
+			<strong style="font-size: 1.5rem !important">We are on Social Media</strong><br><br>
+			<div style="white-space: normal; font-size: 0.9em">
+                 <ion-icon name="logo-twitter" style="color: #00acee !important"></ion-icon>
+    			<strong style="font-size: 1.3rem !important; font-weight: 100 !important;">&nbsp;&nbsp;&nbsp;Twitter - <a class="btn btn-primary" href="https://twitter.com/Handymateservi1">@Handymateservi1</a></strong><br>
+            </div>
+			<div style="white-space: normal; font-size: 0.9em">
+                 <ion-icon name="logo-facebook" style="color: #3b5998 !important"></ion-icon>
+    			<strong style="font-size: 1.3rem !important; font-weight: 100 !important;">&nbsp;&nbsp;&nbsp;Facebook - <a class="btn btn-primary" href="https://www.facebook.com/handymateservices">@handymateservices</a></strong><br>
+            </div>
+			<div style="white-space: normal; font-size: 0.9em">
+                 <ion-icon name="logo-instagram" style="color: #FF0000 !important"></ion-icon>
+    			<strong style="font-size: 1.3rem !important; font-weight: 100 !important;">&nbsp;&nbsp;&nbsp;Instagram - <a class="btn btn-primary" href="https://instagram.com/handymateservices?igshid=6p6v495vziiy">HandyMate Zambia</a></strong><br>
+            </div>
+			<div style="white-space: normal; font-size: 0.9em">
+                 <ion-icon name="logo-whatsapp" style="color: #25d366 !important"></ion-icon>
+    			<strong style="font-size: 1.3rem !important; font-weight: 100 !important;">&nbsp;&nbsp;&nbsp;Whatsapp - <a class="btn btn-primary" href="https://wa.me/260975284708?text=Hello">+260975284708</a></strong><br>
+				<small>Add Our Number First to Your Contacts</small>
+            </div>
+			<div style="white-space: normal; font-size: 0.9em; padding-top: 15px !important;">
+                <hr>
+    			<strong style="font-size: 1.5rem !important; font-weight: 100 !important; font-weight: bold !important">Drop Us A Message</strong><br>
+            </div>
+		</ion-item>
+
+      <ion-list>
+		<ion-item style="ont-size: 1.8rem !important; padding: 0px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+			<ion-label floating>Type you message here:<span style="font-weight: bold !important; color: red !important">*</span></ion-label>
+			<ion-textarea rows={14} placeholder="" [(ngModel)]="contactUsData.details" [formControl]="details" id="details" ></ion-textarea>
+		</ion-item>
+		<ion-item style="font-size: 1.8rem !important; padding: 0px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+			<button ion-button full color="secondary" style="background-color: #F5B201 !important" large (click)="sendContactMessage(contactUsData, user)">Send Us A Message</button>
+		</ion-item>
+      </ion-list>
+	  
+    </form>
+  <!--</div>
+  </div>-->
+</ion-content>

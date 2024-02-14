@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar style="background-color: #232D4B; color: #fff !important">
+	<ion-title>
+		<span style="color: #fff !important" *ngIf="message!=undefined && message!=null">Reply Message</span>
+		<span style="color: #fff !important" *ngIf="!(message!=undefined && message!=null)">Compose Project Message</span>
+		<span style="float: right !important; color: #fff !important; font-size: 0.8em !important"><ion-icon name="close" (click)="dismissModal()"></ion-icon></span>
+	</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="">
+    <form [formGroup]="msgDataForm">
+		<ion-item padding-right style="padding-top: 5px !important">
+			<strong style="font-size: 1.5rem !important" *ngIf="(user!=undefined && user!=null && user.role_type=='Artisan')">Send A Message To The Client</strong><br>
+			<strong style="font-size: 1.5rem !important" *ngIf="(user!=undefined && user!=null && (user.role_type=='Private Client' || user.role_type=='Corporate Client'))">Send A Message To The Client</strong><br>
+			<span style="white-space: normal; font-size: 0.9rem !important">Do not include any contact details in your message. If this project has not been assigned to you</span>
+		</ion-item>
+      <!--<div class="errormsg">
+        <div *ngIf="username.errors && username.touched">
+          <p>Username is required.</p>
+        </div>
+		
+      </div>-->
+      <ion-list>
+        <ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.8rem !important; padding: 15px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+          <ion-label style="font-size: 0.9em !important">Receipient:</ion-label>
+          <ion-label *ngIf="message!=undefined && message!=null"><strong style="font-size: 0.9em !important">{{message.from_first_name}} {{message.from_last_name}}</strong></ion-label>
+		  <ion-label *ngIf="!(message!=undefined && message!=null) && projectDetails!=undefined && projectDetails!=null && projectDetails.created_by_user_id!=user.id && !(messageBidder!=undefined && messageBidder!=null)"><strong style="font-size: 0.9em !important">{{projectDetails.created_by_user.first_name}} {{projectDetails.created_by_user.last_name}}</strong></ion-label>
+		  <ion-label *ngIf="!(message!=undefined && message!=null) && projectDetails!=undefined && projectDetails!=null && projectDetails.created_by_user_id==user.id && messageBidder!=undefined && messageBidder!=null"><strong style="font-size: 0.9em !important">{{messageBidder.bid_by_user.first_name}} {{messageBidder.bid_by_user.last_name}}</strong></ion-label>
+        </ion-item>
+        <ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.8rem !important; padding: 10px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+			<ion-label floating style="color: #000 !important; font-size: 0.9em !important">Your Message:</ion-label>
+			<ion-textarea rows={4} placeholder="" style="font-size: 0.9em !important; height: 100vh" [(ngModel)]="msgDataFormData.msg_details" [formControl]="msg_details" id="msg_details" ></ion-textarea>
+        </ion-item>
+
+      </ion-list>
+    </form>
+</ion-content>
+
+<ion-footer no-shadow>
+	<ion-toolbar position="bottom">
+		<button ion-button full color="secondary" style="background-color: #232D4B !important" (click)="submitProjectMessage(projectDetails, message, user, bid)" large >Send Message</button>
+	</ion-toolbar>
+</ion-footer>

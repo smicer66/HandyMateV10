@@ -1,0 +1,119 @@
+<!--
+  Generated template for the OneBankPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" style="" [ngClass]="((user!=undefined && user!=null && user.role_type == 'Artisan') ? 'primary artisanThick': ((user!=undefined && user!=null && user.role_type == 'Corporate Artisan') ? 'primary corporateArtisanThick' : ((user!=undefined && user!=null && user.role_type == 'Corporate Client') ? 'primary corporateClientThick' : 'primary clientThick')))">
+    <ion-title style="color: #fff !important; text-align: right; font-size: 1.5rem">
+		<span style="color: #fff !important; text-align: right; font-size: 1.5rem">Hello <span *ngIf="user!=undefined && user!=null">{{user.first_name}}</span></span>
+	</ion-title>
+	<ion-buttons start> 
+		<div (click)="viewProfilePix()" style="background-color: transparent !important; border-radius: 50% !important; height: 32px !important; width: 32px !important; overflow: hidden"> 
+			<img *ngIf="!(user!=undefined && user!=null && user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="width: 32px !important; background-color: transparent !important">
+			<img *ngIf="(user!=undefined && user!=null && user.current_image_url!=null)"  [src]="user.current_image_url" style="width: 32px !important; background-color: transparent !important">
+		</div>
+	</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+	<div style="clear:both !important; padding: 0px !important; padding-bottom: 20px !important; background-color: #fff !important; padding-top: 10px !important; border-radius: 5px !important;">
+		<div style="float: left !important; font-size: 1.3em !important; font-weight: bold !important; color: #243F5C !important; padding-left: 15px !important; padding-bottom: 10px !important;">What We Offer</div>
+		<div (click)="viewAllProjects()" style="float: right !important; font-size: 1.1em !important; color: #F5B201 !important; padding-left: 15px !important; padding-bottom: 10px !important; text-decoration: underline; padding-right: 15px !important; ">See all</div>
+		
+		<ion-grid style="padding-left: 0px !important; padding-right: 0px !important;">
+			
+
+				<!--<ion-slides pager="false" initialSlide=1 slidesPerView=2 loop=true centeredSlides=true spaceBetween=20 #slideWithNav2
+				  (ionSlideDidChange)="SlideDidChange(sliderTwo,slideWithNav2)">
+				  <ion-slide *ngFor="let s of sliderTwo.slidesItems">
+					<img src="https://i.picsum.photos/id/{{s.id}}/300/200.jpg">
+				  </ion-slide [ngStyle]="{'background-color': sk.background_color!=undefined && sk.background_color!=null && sk.background_color.length>0 ? ('#' + sk.background_color) : '#243F5C'}">
+				</ion-slides>-->
+				
+				<ion-slides pager="false" initialSlide=1 slidesPerView=2 loop=true centeredSlides=true spaceBetween=20>
+					<ion-slide *ngFor="let sk of skillsList; let t5=index" [style.background-color]="sk.background_color" [style.color]="sk.text_color" class="skbg">
+						<img *ngIf="sk.icon_url!=undefined && sk.icon_url!=null && sk.icon_url.length>0" [src]="sk.icon_url" class="categoryicon">
+						<img *ngIf="!(sk.icon_url!=undefined && sk.icon_url!=null && sk.icon_url.length>0)" src="http://handymateservices.com/img/skills/cleaner_icon.svg" class="categoryicon">
+						<span (click)="addNewProjects(sk.skill_name, sk.id)" class="fa fa-plus " style="float: right !important;color: #fff !important;font-weight: bold !important;margin-right: 20px !important; font-size: 30px !important">+</span>
+						<div>&nbsp;</div>
+						<div *ngIf="sk.text_color!=undefined && sk.text_color!=null && sk.text_color.length>0" [ngStyle]="{'color': ('#' + sk.text_color)}" class="skname" (click)="viewProjects(sk.skill_name, sk.id)">{{sk.skill_name}}</div>
+						<div *ngIf="!(sk.text_color!=undefined && sk.text_color!=null && sk.text_color.length>0)" style="color: #fff !important; " class="skname" (click)="viewProjects(sk.skill_name, sk.id)">{{sk.skill_name}}</div>
+					</ion-slide>
+					<!--<ion-slide style="padding-top: 20px !important; padding-bottom: 20px !important; background-color: #F5B201 !important; border-radius: 10px !important">
+						<img src="http://handymateservices.com/img/skills/plumber_icon.svg">
+						<span (click)="addNewProjects('Plumber', 2)" class="fa fa-plus " style="float: right !important;color: #fff !important;font-weight: bold !important;margin-right: 20px !important; font-size: 30px !important">+</span>
+						<div>&nbsp;</div>
+						<div style="color: #fff !important; font-size: 0.8em !important;" (click)="viewProjects('Plumber', 2)">Plumber</div>
+					</ion-slide>
+					<ion-slide style="padding-top: 20px !important; padding-bottom: 20px !important; background-color: #4C8BD0 !important; border-radius: 10px !important">
+						<img src="http://handymateservices.com/img/skills/electrician_icon.svg">
+						<span (click)="addNewProjects('Electrician', 3)" class="fa fa-plus " style="float: right !important;color: #fff !important;font-weight: bold !important;margin-right: 20px !important; font-size: 30px !important">+</span>
+						<div>&nbsp;</div>
+						<div style="color: #fff !important; font-size: 0.8em !important;" (click)="viewProjects('Electrician', 3)">Electrician</div>
+					</ion-slide>-->
+				</ion-slides>
+
+		</ion-grid>
+	</div>	
+	<div style="clear:both !important;">	
+		<div style="float: left !important; font-size: 1.3em !important; font-weight: bold !important; color: #fff !important; padding-left: 15px !important; padding-top: 10px !important;">Available Projects</div>
+		<div style="float: right !important; font-size: 1.1em !important; color: #F5B201 !important; text-decoration: underline; padding-left: 15px !important; padding-top: 10px !important; padding-right: 15px !important; " (click)="viewAllProjects()">See all</div>
+		<!--<ion-list  ion-row style="clear: both !important;margin:0px !important; padding-right: 0px !important; margin-right:0px !important;">-->
+		<ion-grid style="padding-left: 0px !important; padding-right: 0px !important;">
+			<ion-slides pager="false" initialSlide=1 slidesPerView=2 loop=true centeredSlides=true spaceBetween=20>
+				<ion-slide class="projectslist" *ngFor="let acct of currentProjectList; let t1=index" style="width: 200px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 15px !important">
+					<!--<div class="squareImageSlotDiv">-->
+						<div (click)="viewSingeProject(acct, user)" class="" style="width:200px !important; height: 150px !important; position: relative !important; overflow: hidden !important;">
+							<img *ngIf="acct.sub_skills!=undefined && acct.sub_skills.length>0" [src]="acct.sub_skills[0].sub_skill.image_path_url" class="squareImageSlot" style="border-radius: 20px 20px 0px 0px !important; border: 1px solid #fff !important; width: 100% !important;">
+							<!--<div col-12="" ion-row="" style="font-size:  11px !important; position: absolute; bottom: 0px; background-color: #000 !important; opacity: .5; color: #fff">{{acct.title}}</div>-->
+							<div col-12="" ion-row="" style="font-size:  11px !important; position: absolute; bottom: 0px; background-color: #000 !important; opacity: .5; color: #fff">
+								<div style="float: left !important; background-color: transparent !important; border-radius: 50% !important; height: 24px !important; width: 24px !important; overflow: hidden"> 
+									<img *ngIf="!(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)" src="assets/imgs/icon_user.png" style="height: 24px !important; background-color: transparent !important">
+									<img *ngIf="(acct.created_by_user!=undefined && acct.created_by_user!=null && acct.created_by_user.current_image_url!=null)"  [src]="acct.created_by_user.current_image_url" style="height: 24px !important; background-color: transparent !important">
+								</div>
+								<div style="padding-top: 5px !important; float: left !important; background-color: transparent !important; overflow: hidden" ng-if="acct.created_by_user!=undefined && acct.created_by_user"> 
+									<span style="padding-left: 5px !important">Posted by {{acct.created_by_user && acct.created_by_user!=undefined ? acct.created_by_user.first_name : 'Guest'}}</span>
+								</div>
+								<ionic3-star-rating #rating
+									activeIcon = "ios-star"
+									defaultIcon = "ios-star-outline"
+									activeColor = "#fcba03" 
+									defaultColor = "#d1d1d1"
+									readonly="false" 
+									*ngIf="acct.created_by_user && acct.created_by_user!=undefined && acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null"
+									rating="{{acct.created_by_user && acct.created_by_user!=undefined && acct.created_by_user.total_user_rating/(acct.created_by_user.rating_count)}}"
+									fontSize = "15px">
+								</ionic3-star-rating>
+								<ionic3-star-rating #rating
+									activeIcon = "ios-star"
+									defaultIcon = "ios-star-outline"
+									activeColor = "#fcba03" 
+									defaultColor = "#d1d1d1"
+									readonly="false" 
+									*ngIf="!(acct.created_by_user && acct.created_by_user!=undefined && acct.created_by_user.total_user_rating!=undefined && acct.created_by_user.total_user_rating!=null && acct.created_by_user.rating_count!=undefined && acct.created_by_user.rating_count!=null)"
+									rating="0"
+									fontSize = "15px">
+								</ionic3-star-rating>
+							</div>
+						</div>
+						<div style="background-color: #fff !important; width: 200px !important; padding: 5px !important; " (click)="viewSingeProject(acct, user)">
+							<span style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px !important">{{acct.title}}</span>
+							<span style="color: #F5B201 !important; font-size: 14px !important">{{acct.project_currency}}{{acct.budget}}</span>
+						</div>
+					<!--</div>-->
+				</ion-slide>
+			</ion-slides>
+
+		<!--</ion-list>-->
+		</ion-grid>
+
+
+
+	</div>
+
+</ion-content>

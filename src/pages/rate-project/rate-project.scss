@@ -1,0 +1,18 @@
+page-rate-project {
+	ion-content{
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+
+	.list-md > .item-block:last-child ion-label, .list-md > .item-block:last-child .item-inner, .list-md > .item-wrapper:last-child ion-label, .list-md > .item-wrapper:last-child .item-inner {
+		margin-right: 0px !important;
+		padding-right: 0px !important;
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+}

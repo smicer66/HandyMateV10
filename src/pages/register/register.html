@@ -1,0 +1,86 @@
+<ion-content class="register-page">
+
+	<div class="main-content">
+		<ion-grid style="padding: 0px !important; padding-left: 30px !important; padding-right: 30px !important">
+			<div ion-row justify-content-center style="padding-bottom:20px !important; padding-top:60px !important">
+			  <div style="text-align: center" col-12><img class="login_logo" style="height: 64px" src="assets/imgs/logo_no_bg.png"></div>
+			  <div style="text-align: center; font-size: 1.3em; font-weight: bold" col-12>&nbsp;</div>
+			  <div style="text-align: left; font-size: 1.2em; color: #fff !important; font-weight: bold !important" col-12>Register</div>
+			  <div style="text-align: left; font-size: 1.1em; color: #fff !important" col-12>Enter your phone number to register</div>
+			</div>
+			<div ion-row justify-content-center style="padding-top: 0px !important;padding-left:  0px !important; padding-right: 0px !important;">
+				<form [formGroup]="authForm" col-12 justify-content-center style="padding-left: 0px !important; padding-right: 0px !important;">
+					
+					<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-12 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-select  col-12 [(ngModel)]="regData.role_type" [formControl]="role_type" id="role_type" placeholder="I Am A/An..." title="I Am A/An...">
+								<ion-option value="Artisan">Artisan Looking For Work</ion-option>
+								<!--<ion-option value="Corporate Artisan">Corporate Firm Providing Artisan Services</ion-option>-->
+								<ion-option value="Private Client">Client Looking For Workers</ion-option>
+								<!--<ion-option value="Corporate Client">Corporate Client</ion-option>-->
+							</ion-select>
+						</div>
+					</div>
+					<div style="font-size:12px !important;">&nbsp;</div>
+					
+					
+					<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-5 style="background-color: #485A70 !important; padding-right: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-avatar item-start style="padding: 14px !Important; background-color: #485A70 !important; padding-right: 0px !important; padding-bottom: 0px !Important;">
+								<img src="assets/imgs/country/{{countryFlag}}" style="float: left !important;">
+								<a href="javascript:void(0);" (click)="openMobileNumberModal()"  style="float: right !important;  font-size: 1.3em !important; color: #C3CAD2 !important; text-decoration: underline; padding-top: 2px">{{countryCode}}</a>
+							</ion-avatar>
+						</div>
+						<div ion-col col-7 style="padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-input value="" style="background-color: #485A70 !important; color: #C3CAD2 !important; font-size: 1.8rem !important; padding: 7px !Important; padding-left: 0px !important; padding-top: 2px !important" [(ngModel)]="regData.username" [formControl]="username" id="username" type="tel" required placeholder="000000000"></ion-input>
+						</div>
+					</div>
+					<!--<div style="font-size:12px !important; text-align: center !important; color: #C1C1C1">Enter the last 9 digits of your mobile phone number</div>-->
+					<div style="font-size:12px !important;">&nbsp;</div>
+					
+					<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-3 style="background-color: #485A70 !important; padding-right: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-avatar item-start style="padding: 14px !Important; background-color: #485A70 !important; padding-right: 0px !important; padding-bottom: 0px !Important;">
+								<img src="assets/imgs/padlock.svg" style="float: left !important; height: 24px !important">
+							</ion-avatar>
+						</div>
+						<div ion-col col-9 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-input value="" style="text-align: center !important; color: #C3CAD2 !important; background-color: #485A70 !important; font-size: 1.8rem !important; padding: 7px !Important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important; " [(ngModel)]="regData.password" [formControl]="password" id="password" type="password" required placeholder="Password"></ion-input>
+						</div>
+					</div>
+					<div style="font-size:12px !important;">&nbsp;</div>
+					
+					<div ion-row col-12 style="background-color: #485A70 !important;padding-top: 0px !important;padding-bottom: 0px !important;border-radius: 5px !important;border: 1px #C1CAE3 solid;">
+						<div ion-col col-3 style="background-color: #485A70 !important; padding-right: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-avatar item-start style="padding: 14px !Important; background-color: #485A70 !important; padding-right: 0px !important; padding-bottom: 0px !Important;">
+								<img src="assets/imgs/padlock.svg" style="float: left !important; height: 24px !important">
+							</ion-avatar>
+						</div>
+						<div ion-col col-9 style="background-color: #485A70 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important">
+							<ion-input value="" style="text-align: center !important; color: #C3CAD2 !important; background-color: #485A70 !important; font-size: 1.8rem !important; padding: 7px !Important; padding-left: 0px !important; padding-top: 0px !important; padding-bottom: 0px !important; " [(ngModel)]="regData.confirm_password" [formControl]="confirm_password" id="confirm_password" type="password" required placeholder="Confirm Password"></ion-input>
+						</div>
+					</div>
+					<!--<div style="font-size: 1.0em !important; text-align: center !important; color: #fff; padding: 10px !important;" (click)="moveToForgotPassword()">Forgot Password</div>-->
+					<div style="font-size:12px !important;">&nbsp;</div>
+					
+					<div ion-row col-12 style="border-radius: 5px !important; background-color: #F5B201 !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
+						<div ion-col col-12 style="border-radius: 5px !important; padding-top: 0px !important; padding-bottom: 0px !important; padding-left: 0px !important; padding-right: 0px !important;">
+							<button type="submit" ion-button full  color="secondary" style="border-radius: 5px !important; background-color: #F5B201" [disabled]="!authForm.valid"  (click)="doRegisterStepOne(regData)">Register Me</button>
+						</div>
+					</div>
+					<div col-12 padding text-left class="form-bottom-text" style="color: #fff !important; font-size: 1.0em !important; float: left !important; text-align: center !important">I have an account. <a href="javascript:void(0);" (click)="moveToLogin()"  style="font-size: 1.1em !important; color: #fff !important; text-decoration: underline; font-weight: bold !important">Login</a></div>
+					
+				</form>
+			</div>
+			
+			<!--<div ion-row justify-content-center style="padding: 0px !important; padding-top:10px !important">
+				<div ion-col col-12 style="padding: 0px !important">
+					<div col-12 style="" >
+						<div col-12 padding text-left class="form-bottom-text" style="color: #fff !important; font-size: 1.1em !important; float: left !important; text-align: left !important">Don't have an account? <a href="javascript:void(0);" (click)="moveToRegister()"  style="font-size: 1.1em !important; color: #fff !important; text-decoration: underline">Register</a></div>
+						<div col-6 padding text-right class="form-bottom-text" style="font-size: 1.1em !important; float: right !important; text-align: left !important"><a href="javascript:void(0);" (click)="moveToForgotPassword()"  style="font-size: 1.1em !important; color: #98A361 !important; text-decoration: underline">Forgot Password?</a></div>
+					</div>
+				</div>
+			</div>-->
+		</ion-grid>
+	</div>
+</ion-content>

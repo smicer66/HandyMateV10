@@ -1,0 +1,227 @@
+page-view-project {
+	.container-logo {
+		display: inline-block;
+		width: 100%;
+		margin: 20px 0;
+		img {
+			max-width: 250px;
+		}
+	}
+	.footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before
+	{
+		top: 0px !important;
+		height: 0px !important;
+	}
+
+
+	.text-input{
+		background-color: #F3FBEE !important;
+		padding: 7px !important;
+		text-align: center;
+		font-size: 1.2em;
+		max-width: 100% !important;
+	}
+
+	.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+	bottom: 0px;
+	}
+
+
+	.toolbar-md {
+		padding: 0px !important;
+	}
+
+	.text-input::-moz-placeholder {
+	  color: #000;
+	  opacity: 1;
+	}
+
+	.text-input:-ms-input-placeholder {
+	  color: #000;
+	  opacity: 1;
+	}
+
+	.text-input::-webkit-input-placeholder {
+	  color: #000;
+	  opacity: 1;
+	}
+
+	.item-input {
+	border-bottom: 3px #fff solid !important;
+	}
+	.main-content {
+	@include flexbox();
+	@include flex-wrap(wrap);
+	min-height: 100%;
+	}
+	.container-bottom {
+	@include inline-flex;
+	@include flex-wrap(wrap);
+	@include align-self(flex-end);
+	}
+	.item-inner{
+	border-bottom: 0px !important;
+	}
+	.list-md, .list-ios {
+	margin:0 !important;
+	}
+	.list {
+	padding:0 !important;
+	}
+	form {
+	button{
+		font-size: 2.6rem !important;
+	}
+
+	.button-md,
+	.button-ios {
+	  margin: 0px !important;
+	  background-color: $black;
+	  padding: 26px !important;
+	}
+	}
+	.form-bottom-text label,
+	a {
+	color: $white;
+	}
+	// a[disabled],
+	// button[disabled],
+	// [ion-button][disabled] {
+	//   opacity: 0.8 !important;
+	// }
+	.errormsg p {
+	background-color: rgba(255,0,0,.3);
+	color: $white;
+	border: 1px solid #FF0000;
+	padding: 5px;
+	}
+	.sepretor-or {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	}
+	.sepretor-or p {
+	color: $white  ;
+	font-size: 16px;
+	text-transform: lowercase;
+	}
+	.sepretor-or p::before,
+	.sepretor-or p::after {
+	float: left;
+	width: -webkit-calc(48% - 10px);
+	width: -moz-calc(48% - 10px);
+	width: calc(48% - 10px);
+	display: inline-block;
+	height: 1px;
+	margin-top: 8px;
+	background-image: url('../assets/imgs/seprator.png');
+	background-repeat: repeat;
+	content: '';
+	}
+	.sepretor-or p::after {
+	float: right;
+	}
+	.eye-icon-btn{
+	background-color: transparent !important;
+	color: $black;
+	font-size: 2.2rem !important;
+	}
+
+	.item-md
+	{
+		/*font-size: 2.6rem !important;*/
+	}
+
+
+	.sectionTitle{
+		color: #000 !important;
+		font-weight: bold !important;
+		font-size: 1.1em !important;
+		border-right: 0px solid rgba(60, 61, 63, 0.3);
+	}
+
+	.list span {
+		border-right: 0px solid rgba(60, 61, 63, 0.3);
+	}
+	
+	.clientThick{
+		background-color: #4298f5 !important;
+	}
+  
+	.artisanThick{
+		background-color: #2282ab !important;
+	}
+	
+	/*LDPI*/
+	@media only screen and (min-width: 200px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-ldpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*MDPI*/
+	@media only screen and (min-width: 320px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-mdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*HDPI*/
+	@media only screen and (min-width: 480px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-hdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*XDPI*/
+	@media only screen and (min-width: 720px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-xhdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	}
+	
+	/*XXLDPI*/
+	@media only screen and (min-width: 960px) {
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-xxhdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	
+	}
+	
+	/*XXXDPI*/
+	@media only screen and (min-width: 1280px) {
+		
+		.scroll-content{
+			background-color:#232D4B !important;
+			background-image: url('../assets/imgs/drawable-xxxhdpi/bg1.png');
+			background-size: 100% auto !important;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+	
+	}
+}

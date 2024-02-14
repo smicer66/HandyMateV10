@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar style="background-color: #232D4B; color: #fff !important">
+    <ion-title>
+		<span style="color: #fff !important">Rate Project</span>
+		<span style="float: right !important; color: #fff !important; font-size: 0.8em !important"><ion-icon name="close" (click)="dismissModal()"></ion-icon></span>
+	</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="">
+    <form [formGroup]="ratingDataForm">
+		<ion-item padding-right>
+			<strong style="font-size: 2rem !important" *ngIf="user.role_type=='Artisan'">Rate Project Owner</strong><br>
+			<span style="white-space: normal" *ngIf="user.role_type=='Artisan'">Rate the performance of the project owner during the project period.</span>
+			<strong style="font-size: 2rem !important" *ngIf="user.role_type=='Private Client' || user.role_type=='Corporate Client'">Rate Artisan</strong><br>
+			<span style="white-space: normal" *ngIf="user.role_type=='Private Client' || user.role_type=='Corporate Client'">Rate the performance of the artisan during the project period.</span>
+		</ion-item>
+		
+      <ion-list>
+		<ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.8rem !important; padding: 10px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+			<ion-label floating>Rating Score:</ion-label>
+			<ion-select [(ngModel)]="ratingDataFormData.rating" [formControl]="rating" id="rating" *ngIf="(user!=undefined && user!=null && user.role_type=='Artisan')">
+				<ion-option value="0">0 - Terrible</ion-option>
+				<ion-option value="1">1 - Poor</ion-option>
+				<ion-option value="2">2 - Fair</ion-option>
+				<ion-option value="3">3 - Average</ion-option>
+				<ion-option value="4">4 - Good</ion-option>
+				<ion-option value="5">5 - Excellent</ion-option>
+		  </ion-select>
+		  <ion-select [(ngModel)]="ratingDataFormData.rating" [formControl]="rating" id="rating" *ngIf="(user!=undefined && user!=null && user.role_type!='Artisan')">
+				<ion-option value="0">0 - Terribly Poor Performance</ion-option>
+				<ion-option value="1">1 - Poor Performance</ion-option>
+				<ion-option value="2">2 - Fair Performance</ion-option>
+				<ion-option value="3">3 - Average Performance</ion-option>
+				<ion-option value="4">4 - Good Performance</ion-option>
+				<ion-option value="5">5 - Excellent Performance</ion-option>
+		  </ion-select>
+		</ion-item>
+        <ion-item padding-right style="background-color: #C1CAE3 !important; font-size: 1.8rem !important; padding: 15px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+          <ion-label floating>Reasons For Your Rating:</ion-label>
+          <ion-textarea rows={4} placeholder="" [(ngModel)]="ratingDataFormData.reviewClient" [formControl]="reviewClient" id="reviewClient" ></ion-textarea>
+        </ion-item>
+        <ion-item padding-right style="font-size: 1.8rem !important; padding: 0px !Important; padding-top: 0px !Important; padding-bottom: 0px !Important; border-bottom: 3px #fff solid !important;">
+          <button ion-button full color="secondary" style="background-color: #232D4B !important" (click)="rateProject(projectDetails)" large >Mark As Completed</button>
+        </ion-item>
+
+      </ion-list>
+    </form>
+</ion-content>
