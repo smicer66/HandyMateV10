@@ -21,7 +21,7 @@ npm install -g @ionic/cli<br><br>
 
 If there was a previous installation of the Ionic CLI, it will need to be uninstalled due to a change in package name.<br><br>
 
-$ npm uninstall -g ionic<br><br>
+$ npm uninstall -g ionic<br>
 $ npm install -g @ionic/cli
 
 ## Install
